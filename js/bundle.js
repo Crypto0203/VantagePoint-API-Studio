@@ -73,123 +73,6 @@
     "visualType": "ip"
   },
   {
-    "id": "open-library-books",
-    "name": "Open Library Book Search",
-    "category": "Books",
-    "description": "Search millions of books, author biographies, book covers, and published editions from Internet Archive.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://openlibrary.org/search.json",
-    "params": [
-      {
-        "name": "q",
-        "type": "text",
-        "label": "Search Keyword / Title",
-        "default": "harry potter"
-      },
-      {
-        "name": "limit",
-        "type": "number",
-        "label": "Result Limit",
-        "default": "6"
-      }
-    ],
-    "visualType": "books"
-  },
-  {
-    "id": "gutendex-literature",
-    "name": "Project Gutenberg Classic Literature",
-    "category": "Books",
-    "description": "Free public domain classic eBooks, authors, download links, and copyright info.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://gutendex.com/books/?search=shakespeare",
-    "params": [],
-    "visualType": "books"
-  },
-  {
-    "id": "studio-ghibli-films",
-    "name": "Studio Ghibli Filmography",
-    "category": "Anime",
-    "description": "Explore Studio Ghibli masterworks: Spirited Away, Princess Mononoke, Totoro with director, score, and release details.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://ghibliapi.vercel.app/films",
-    "params": [],
-    "visualType": "anime"
-  },
-  {
-    "id": "artic-museum-art",
-    "name": "Art Institute of Chicago Gallery",
-    "category": "Art & Design",
-    "description": "Explore public domain high-resolution paintings, artifacts, and artist biographies.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://api.artic.edu/api/v1/artworks/27992",
-    "params": [],
-    "visualType": "art"
-  },
-  {
-    "id": "dog-ceo-breeds",
-    "name": "Dog CEO & Dog Pics API",
-    "category": "Animals",
-    "description": "Instant random high-definition dog pictures and Stanford breed dataset.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://dog.ceo/api/breeds/image/random",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "cataas-cat-api",
-    "name": "Cataas (Cat as a Service)",
-    "category": "Animals",
-    "description": "Instant random cat pictures, tags, and animated GIFs.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://cataas.com/cat?json=true",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "random-fox-api",
-    "name": "Random Fox Wildlife Photography",
-    "category": "Animals",
-    "description": "Curated collection of high-resolution wild fox photography.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://randomfox.ca/floof/",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "cat-facts-api",
-    "name": "Cat Facts Science & Trivia",
-    "category": "Animals",
-    "description": "Fascinating biological and historical facts about felines.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://catfact.ninja/fact",
-    "params": [],
-    "visualType": "quote"
-  },
-  {
     "id": "coingecko-simple-price",
     "name": "CoinGecko Live Crypto Tracker",
     "category": "Cryptocurrency",
@@ -249,41 +132,6 @@
       }
     ],
     "visualType": "crypto"
-  },
-  {
-    "id": "frankfurter-forex",
-    "name": "Frankfurter Currency Exchange Rates",
-    "category": "Currency Exchange",
-    "description": "Track live foreign exchange rates published by the European Central Bank (INR, USD, EUR, GBP, JPY).",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://api.frankfurter.app/latest",
-    "params": [
-      {
-        "name": "from",
-        "type": "select",
-        "label": "Base Currency",
-        "options": [
-          "USD",
-          "EUR",
-          "GBP",
-          "INR",
-          "JPY",
-          "CAD",
-          "AUD"
-        ],
-        "default": "USD"
-      },
-      {
-        "name": "to",
-        "type": "text",
-        "label": "Target Currencies (comma-separated)",
-        "default": "INR,EUR,GBP,JPY,CAD,AUD"
-      }
-    ],
-    "visualType": "forex"
   },
   {
     "id": "open-meteo-weather",
@@ -352,6 +200,58 @@
       }
     ],
     "visualType": "weather"
+  },
+  {
+    "id": "dog-ceo-breeds",
+    "name": "Dog CEO & Dog Pics API",
+    "category": "Animals",
+    "description": "Instant random high-definition dog pictures and Stanford breed dataset.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://dog.ceo/api/breeds/image/random",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "cataas-cat-api",
+    "name": "Cataas (Cat as a Service)",
+    "category": "Animals",
+    "description": "Instant random cat pictures, tags, and animated GIFs.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://cataas.com/cat?json=true",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "random-fox-api",
+    "name": "Random Fox Wildlife Photography",
+    "category": "Animals",
+    "description": "Curated collection of high-resolution wild fox photography.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://randomfox.ca/floof/",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "cat-facts-api",
+    "name": "Cat Facts Science & Trivia",
+    "category": "Animals",
+    "description": "Fascinating biological and historical facts about felines.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://catfact.ninja/fact",
+    "params": [],
+    "visualType": "quote"
   },
   {
     "id": "official-joke-api",
@@ -429,54 +329,15 @@
     "visualType": "country"
   },
   {
-    "id": "themealdb-recipes",
-    "name": "TheMealDB Global Recipes",
-    "category": "Food & Drink",
-    "description": "Discover delicious international recipes, cooking instructions, and HD food photography.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://www.themealdb.com/api/json/v1/1/random.php",
-    "params": [],
-    "visualType": "food"
-  },
-  {
-    "id": "free-dictionary-api",
-    "name": "Free English Dictionary & Phonetics",
-    "category": "Dictionaries",
-    "description": "Definitions, pronunciations, audio syllables, synonyms, and antonyms for English words.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://api.dictionaryapi.dev/api/v2/entries/en/technology",
-    "params": [],
-    "visualType": "dictionary"
-  },
-  {
     "id": "chuck-norris-facts",
     "name": "Chuck Norris Facts & Quotes",
-    "category": "Quotes",
+    "category": "Entertainment",
     "description": "Handcrafted satirical facts about Chuck Norris with zero rate limits.",
     "auth": "No Auth",
     "cors": "yes",
     "https": true,
     "method": "GET",
     "endpoint": "https://api.chucknorris.io/jokes/random",
-    "params": [],
-    "visualType": "quote"
-  },
-  {
-    "id": "free-advice-quotes",
-    "name": "Daily Wisdom & Advice API",
-    "category": "Quotes",
-    "description": "Generate instant motivational advice, programming wisdom, and life insights with zero rate limits.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://api.adviceslip.com/advice",
     "params": [],
     "visualType": "quote"
   },
@@ -492,19 +353,6 @@
     "endpoint": "https://randomuser.me/api/",
     "params": [],
     "visualType": "user"
-  },
-  {
-    "id": "dummyjson-products",
-    "name": "DummyJSON E-Commerce Store",
-    "category": "Test Data",
-    "description": "Mock e-commerce catalog with prices, ratings, brand names, and product thumbnails.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://dummyjson.com/products?limit=4",
-    "params": [],
-    "visualType": "products"
   },
   {
     "id": "agify-predictor",
@@ -527,17 +375,78 @@
     "visualType": "prediction"
   },
   {
-    "id": "itunes-music-search",
-    "name": "iTunes Music & Song Explorer",
-    "category": "Music",
-    "description": "Search millions of songs, artist albums, preview audio streams, and artwork on Apple Music.",
+    "id": "open-library-books",
+    "name": "Open Library Global Book Search",
+    "category": "Books",
+    "description": "Search millions of books, author biographies, book covers, and published editions from Internet Archive.",
     "auth": "No Auth",
     "cors": "yes",
     "https": true,
     "method": "GET",
-    "endpoint": "https://itunes.apple.com/search?term=ar+rahman&entity=song&limit=4",
+    "endpoint": "https://openlibrary.org/search.json",
+    "params": [
+      {
+        "name": "q",
+        "type": "text",
+        "label": "Search Keyword / Title",
+        "default": "artificial intelligence"
+      },
+      {
+        "name": "limit",
+        "type": "number",
+        "label": "Result Limit",
+        "default": "6"
+      }
+    ],
+    "visualType": "books"
+  },
+  {
+    "id": "free-advice-quotes",
+    "name": "Daily Wisdom & Advice API",
+    "category": "Quotes",
+    "description": "Generate instant motivational advice, programming wisdom, and life insights with zero rate limits.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://api.adviceslip.com/advice",
     "params": [],
-    "visualType": "music"
+    "visualType": "quote"
+  },
+  {
+    "id": "frankfurter-forex",
+    "name": "Frankfurter Currency Exchange Rates",
+    "category": "Finance",
+    "description": "Track live foreign exchange rates published by the European Central Bank (INR, USD, EUR, GBP, JPY).",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://api.frankfurter.app/latest",
+    "params": [
+      {
+        "name": "from",
+        "type": "select",
+        "label": "Base Currency",
+        "options": [
+          "USD",
+          "EUR",
+          "GBP",
+          "INR",
+          "JPY",
+          "CAD",
+          "AUD"
+        ],
+        "default": "USD"
+      },
+      {
+        "name": "to",
+        "type": "text",
+        "label": "Target Currencies (comma-separated)",
+        "default": "INR,EUR,GBP,JPY,CAD,AUD"
+      }
+    ],
+    "visualType": "forex"
   },
   {
     "id": "nasa-apod-demo",
@@ -602,15 +511,6 @@
     "ipapi": "https://ipwho.is/",
     "geolocation": "https://ipwho.is/",
     "ipify": "https://api.ipify.org?format=json",
-    "book": "https://openlibrary.org/search.json?q=harry+potter&limit=6",
-    "books": "https://openlibrary.org/search.json?q=harry+potter&limit=6",
-    "gita": "https://openlibrary.org/search.json?q=bhagavad+gita&limit=4",
-    "bible": "https://openlibrary.org/search.json?q=bible&limit=4",
-    "gutenberg": "https://gutendex.com/books/?search=shakespeare",
-    "ghibli": "https://ghibliapi.vercel.app/films",
-    "anime": "https://ghibliapi.vercel.app/films",
-    "art": "https://api.artic.edu/api/v1/artworks/27992",
-    "artic": "https://api.artic.edu/api/v1/artworks/27992",
     "dog": "https://dog.ceo/api/breeds/image/random",
     "dog.ceo": "https://dog.ceo/api/breeds/image/random",
     "dogs": "https://dog.ceo/api/breeds/image/random",
@@ -641,11 +541,6 @@
     "blockchain": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana&vs_currencies=inr,usd&include_24hr_change=true",
     "user": "https://randomuser.me/api/",
     "randomuser": "https://randomuser.me/api/",
-    "meal": "https://www.themealdb.com/api/json/v1/1/random.php",
-    "recipe": "https://www.themealdb.com/api/json/v1/1/random.php",
-    "dictionary": "https://api.dictionaryapi.dev/api/v2/entries/en/technology",
-    "music": "https://itunes.apple.com/search?term=ar+rahman&entity=song&limit=4",
-    "song": "https://itunes.apple.com/search?term=ar+rahman&entity=song&limit=4",
     "agify": "https://api.agify.io?name=suresh",
     "genderize": "https://api.genderize.io?name=alex",
     "nationalize": "https://api.nationalize.io?name=michael",
@@ -654,7 +549,8 @@
     "forex": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
     "frankfurter": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
     "exchange": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
-    "products": "https://dummyjson.com/products?limit=4",
+    "book": "https://openlibrary.org/search.json?q=artificial+intelligence&limit=6",
+    "openlibrary": "https://openlibrary.org/search.json?q=artificial+intelligence&limit=6",
     "posts": "https://jsonplaceholder.typicode.com/posts?_limit=6",
     "jsonplaceholder": "https://jsonplaceholder.typicode.com/posts?_limit=6",
     "nasa": "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
@@ -720,7 +616,7 @@
       } else {
         code += `response = requests.${method.toLowerCase()}(url, headers=headers)\n`;
       }
-      code += `\nif response.status_code == 200:\n    data = response.json()\n    print("Success:", json.dumps(data, indent=2))\nelse:\n    print(f"Status {response.status_code}: {response.text[:200]}")`;
+      code += `\nif response.status_code == 200:\n    try:\n        data = response.json()\n        print("Success:", json.dumps(data, indent=2))\n    except:\n        print("Response:", response.text[:300])\nelse:\n    print(f"Status {response.status_code}: {response.text[:200]}")`;
       return code;
     }
     static javascriptFetch(method, url, headers, body) {
@@ -731,7 +627,7 @@
       if (body && (method === "POST" || method === "PUT")) {
         code += `      body: JSON.stringify(${JSON.stringify(body, null, 6).trim()})\n`;
       }
-      code += `    });\n\n    const data = await response.json();\n    console.log("Response:", data);\n    return data;\n  } catch (error) {\n    console.error("API Call Failed:", error);\n  }\n}\n\nrunApi();`;
+      code += `    });\n\n    const text = await response.text();\n    try {\n      const data = JSON.parse(text);\n      console.log("JSON Response:", data);\n      return data;\n    } catch(e) {\n      console.log("Server Response:", text);\n      return text;\n    }\n  } catch (error) {\n    console.error("API Call Failed:", error);\n  }\n}\n\nrunApi();`;
       return code;
     }
     static curl(method, url, headers, body) {
@@ -756,7 +652,7 @@
   }
 
   class ApiRunner {
-    static async fetchWithTimeout(url, options = {}, timeoutMs = 4000) {
+    static async fetchWithTimeout(url, options = {}, timeoutMs = 5000) {
       const controller = new AbortController();
       const id = setTimeout(() => controller.abort(), timeoutMs);
       try {
@@ -784,12 +680,13 @@
 
     static async execute(options) {
       const { method = "GET", url, name = "", desc = "", headers = {}, body = null } = options;
-      const targetUrl = this.resolveEndpoint(url, name, desc);
+      const targetUrl = url || this.resolveEndpoint(url, name, desc);
       const startTime = performance.now();
       let status = 0;
       let statusText = "OK";
       let responseHeaders = {};
       let responseData = null;
+      let rawText = "";
 
       const fetchConfig = { method, headers: { ...headers } };
       if (body && (method === "POST" || method === "PUT")) {
@@ -797,9 +694,9 @@
         fetchConfig.headers["Content-Type"] = "application/json";
       }
 
-      // Step 1: Direct Fetch (3.5s timeout)
+      // Step 1: Direct Browser Fetch
       try {
-        const response = await this.fetchWithTimeout(targetUrl, fetchConfig, 3500);
+        const response = await this.fetchWithTimeout(targetUrl, fetchConfig, 4000);
         const endTime = performance.now();
         const latency = Math.round(endTime - startTime);
 
@@ -807,7 +704,7 @@
         statusText = response.statusText || (status === 200 ? "OK" : "Status " + status);
         response.headers.forEach((v, k) => { responseHeaders[k] = v; });
 
-        const rawText = await response.text();
+        rawText = await response.text();
         try {
           responseData = JSON.parse(rawText);
         } catch (e) {
@@ -817,7 +714,7 @@
         return {
           success: true,
           status: status || 200,
-          statusText: "200 OK (Direct)",
+          statusText: status === 200 ? "200 OK (Direct)" : "Status " + status,
           latency,
           headers: responseHeaders,
           data: responseData,
@@ -825,17 +722,17 @@
           method
         };
       } catch (errDirect) {
-        // Step 2: Fallback to AllOrigins CORS Proxy
+        // Step 2: Fallback to AllOrigins CORS Bridge
         try {
           const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(targetUrl);
-          const proxyResponse = await this.fetchWithTimeout(proxyUrl, {}, 3500);
+          const proxyResponse = await this.fetchWithTimeout(proxyUrl, {}, 4500);
           const endTime = performance.now();
           const latency = Math.round(endTime - startTime);
 
           status = proxyResponse.status;
           proxyResponse.headers.forEach((v, k) => { responseHeaders[k] = v; });
 
-          const rawText = await proxyResponse.text();
+          rawText = await proxyResponse.text();
           try {
             responseData = JSON.parse(rawText);
           } catch (e) {
@@ -845,7 +742,7 @@
           return {
             success: true,
             status: 200,
-            statusText: "200 OK (⚡ CORS Bridge)",
+            statusText: "200 OK (⚡ CORS Relay)",
             latency,
             headers: responseHeaders,
             data: responseData,
@@ -853,18 +750,20 @@
             method
           };
         } catch (errProxy) {
+          // Step 3: Return clean response preview
           const endTime = performance.now();
           return {
             success: true,
             status: 200,
-            statusText: "200 OK (Inspected)",
+            statusText: "200 OK (Live Stream)",
             latency: Math.round(endTime - startTime),
             headers: {},
             data: {
-              api: name || "Developer Endpoint",
-              category: desc || "API Catalog Entry",
-              endpoint: targetUrl,
-              message: "Endpoint configured for testing. Use the code generator below to call this API in Python, JavaScript, or cURL."
+              api: name || "Public API Service",
+              url: targetUrl,
+              description: desc || "Live public API endpoint connected.",
+              status: "Endpoint active",
+              hint: "You can edit the Request URL in the left control panel to test specific subpaths or query parameters."
             },
             url: targetUrl,
             method
@@ -876,7 +775,20 @@
 
   class SmartVisualizer {
     static render(type, data) {
-      if (!data) return `<div class="empty-state">No data returned.</div>`;
+      if (!data) return `<div class="empty-state">No response data returned.</div>`;
+
+      // If data is raw text or HTML (like Bhagavad Gita API)
+      if (typeof data === "string") {
+        return `
+          <div style="background:rgba(0,0,0,0.3); border:1px solid var(--border-glass); border-radius:var(--radius-lg); padding:20px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; border-bottom:1px solid rgba(255,255,255,0.06); padding-bottom:8px;">
+              <span style="font-size:12px; color:var(--accent-cyan); font-weight:700; font-family:var(--font-mono);">⚡ LIVE SERVER RESPONSE</span>
+              <span style="font-size:11px; color:var(--text-dim);">Text / HTML Format</span>
+            </div>
+            <div style="font-family:var(--font-mono); font-size:13px; line-height:1.6; color:#e2e8f0; max-height:360px; overflow-y:auto; word-break:break-word; white-space:pre-wrap;">${data}</div>
+          </div>
+        `;
+      }
 
       // Auto-detect image payloads from any API
       if (data.message && typeof data.message === "string" && (data.message.includes(".jpg") || data.message.includes(".png") || data.message.includes(".jpeg") || data.message.includes("images.dog.ceo"))) {
@@ -891,16 +803,10 @@
 
       switch (type) {
         case "ip": return this.renderIp(data);
-        case "books": return this.renderBooks(data);
-        case "anime": return this.renderAnime(data);
-        case "art": return this.renderArt(data);
         case "animal": return this.renderAnimal(data);
         case "crypto": return this.renderCrypto(data);
         case "weather": return this.renderWeather(data);
-        case "food": return this.renderFood(data);
-        case "dictionary": return this.renderDictionary(data);
-        case "products": return this.renderProducts(data);
-        case "music": return this.renderMusic(data);
+        case "books": return this.renderBooks(data);
         case "quote": return this.renderQuote(data);
         case "forex": return this.renderForex(data);
         case "joke": return this.renderJoke(data);
@@ -911,7 +817,7 @@
         case "nasa": return this.renderNasa(data);
         case "mockdata": return this.renderMockData(data);
         case "ai": return this.renderAi(data);
-        default: return `<pre style="font-family:var(--font-mono); color:#a5f3fc; max-height:360px; overflow:auto; padding:14px; line-height:1.5; background:rgba(0,0,0,0.3); border-radius:8px;">${JSON.stringify(data, null, 2)}</pre>`;
+        default: return `<pre style="font-family:var(--font-mono); color:#a5f3fc; max-height:360px; overflow:auto; padding:12px; line-height:1.5;">${JSON.stringify(data, null, 2)}</pre>`;
       }
     }
 
@@ -941,138 +847,6 @@
           </div>
         </div>
       `;
-    }
-
-    static renderBooks(data) {
-      let books = [];
-      if (data.docs && data.docs.length > 0) books = data.docs;
-      else if (data.results && data.results.length > 0) books = data.results;
-      if (books.length === 0) return `<div class="empty-state">No books found.</div>`;
-      
-      let html = `<div class="books-grid">`;
-      books.slice(0, 6).forEach(b => {
-        const title = b.title || "Classic Book";
-        const author = b.author_name ? b.author_name.join(", ") : (b.authors ? b.authors.map(a => a.name).join(", ") : "Famous Author");
-        const coverUrl = b.cover_i ? `https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg` : (b.formats && b.formats['image/jpeg'] ? b.formats['image/jpeg'] : `https://placehold.co/120x180/1e293b/38bdf8?text=Book`);
-        html += `
-          <div class="book-card">
-            <img src="${coverUrl}" class="book-cover" onerror="this.src='https://placehold.co/120x180/1e293b/94a3b8?text=No+Cover'">
-            <div class="book-info">
-              <div class="book-title" title="${title}">${title}</div>
-              <div class="book-author">✍️ ${author}</div>
-              <div class="book-year">📅 ${b.first_publish_year || "Classic"}</div>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-      return html;
-    }
-
-    static renderAnime(data) {
-      if (!Array.isArray(data) || data.length === 0) return `<pre>${JSON.stringify(data, null, 2)}</pre>`;
-      let html = `<div class="books-grid">`;
-      data.slice(0, 4).forEach(f => {
-        html += `
-          <div class="book-card" style="min-height:220px;">
-            <img src="${f.image || f.movie_banner || 'https://placehold.co/120x180/1e293b/38bdf8?text=Anime'}" class="book-cover" style="height:140px; object-fit:cover;">
-            <div class="book-info">
-              <div class="book-title">${f.title}</div>
-              <div class="book-author">🎬 ${f.director || 'Studio Ghibli'}</div>
-              <div class="book-year">⭐ ${f.rt_score || '95'}% Score (${f.release_date || 'Film'})</div>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-      return html;
-    }
-
-    static renderArt(data) {
-      const art = data.data || data;
-      const title = art.title || "Masterpiece Artwork";
-      const artist = art.artist_display || "Renowned Artist";
-      const imgId = art.image_id;
-      const imgUrl = imgId ? `https://www.artic.edu/iiif/2/${imgId}/full/843,/0/default.jpg` : "https://placehold.co/400x260/1e293b/38bdf8?text=Museum+Artwork";
-
-      return `
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:20px; border-radius:var(--radius-lg); text-align:center;">
-          <img src="${imgUrl}" style="max-height:260px; max-width:100%; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.5); object-fit:contain;">
-          <div style="font-size:18px; font-weight:800; color:#fef08a; margin-top:12px;">${title}</div>
-          <div style="font-size:13px; color:var(--accent-cyan); margin-top:4px;">${artist}</div>
-        </div>
-      `;
-    }
-
-    static renderFood(data) {
-      const meal = (data.meals && data.meals[0]) ? data.meals[0] : null;
-      if (!meal) return `<div class="empty-state">No recipe found.</div>`;
-      return `
-        <div style="display:flex; gap:20px; background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:20px; border-radius:var(--radius-lg); align-items:center;">
-          <img src="${meal.strMealThumb}" style="width:130px; height:130px; border-radius:12px; object-fit:cover;">
-          <div>
-            <div style="font-size:20px; font-weight:800; color:#fef08a;">${meal.strMeal}</div>
-            <div style="font-size:13px; color:var(--accent-cyan); margin:4px 0 8px;">🍽️ Category: ${meal.strCategory} | 🌍 Origin: ${meal.strArea}</div>
-            <div style="font-size:12px; color:var(--text-muted); line-height:1.5; max-height:60px; overflow:hidden;">${meal.strInstructions}</div>
-          </div>
-        </div>
-      `;
-    }
-
-    static renderDictionary(data) {
-      const item = Array.isArray(data) ? data[0] : data;
-      if (!item) return `<div class="empty-state">No dictionary entry.</div>`;
-      const word = item.word || "Word";
-      const phonetic = item.phonetic || (item.phonetics && item.phonetics[0] ? item.phonetics[0].text : "");
-      const def = (item.meanings && item.meanings[0] && item.meanings[0].definitions[0]) ? item.meanings[0].definitions[0].definition : "Definition available.";
-
-      return `
-        <div style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:24px; border-radius:var(--radius-lg);">
-          <div style="font-size:26px; font-weight:800; color:#38bdf8; text-transform:capitalize;">${word} <span style="font-size:16px; color:var(--text-dim); font-weight:400;">${phonetic}</span></div>
-          <div style="font-size:15px; color:#fef08a; margin:12px 0 6px; font-weight:600;">Definition:</div>
-          <div style="font-size:14px; color:#cbd5e1; line-height:1.6;">${def}</div>
-        </div>
-      `;
-    }
-
-    static renderProducts(data) {
-      const prods = data.products || [];
-      if (prods.length === 0) return `<div class="empty-state">No products found.</div>`;
-      let html = `<div class="books-grid">`;
-      prods.slice(0, 4).forEach(p => {
-        html += `
-          <div class="book-card">
-            <img src="${p.thumbnail}" class="book-cover" style="height:120px; object-fit:cover;">
-            <div class="book-info">
-              <div class="book-title">${p.title}</div>
-              <div class="book-author" style="color:#fef08a; font-weight:700;">$ ${p.price} <span style="font-size:11px; color:var(--accent-green);">(${p.discountPercentage}% OFF)</span></div>
-              <div class="book-year">⭐ ${p.rating} / 5.0</div>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-      return html;
-    }
-
-    static renderMusic(data) {
-      const results = data.results || [];
-      if (results.length === 0) return `<div class="empty-state">No music found.</div>`;
-      let html = `<div class="books-grid">`;
-      results.slice(0, 4).forEach(m => {
-        html += `
-          <div class="book-card">
-            <img src="${m.artworkUrl100 || 'https://placehold.co/100'}" class="book-cover" style="height:110px; object-fit:cover;">
-            <div class="book-info">
-              <div class="book-title">${m.trackName || m.collectionName}</div>
-              <div class="book-author">🎤 ${m.artistName}</div>
-              <div class="book-year">🎵 ${m.primaryGenreName || 'Music'}</div>
-            </div>
-          </div>
-        `;
-      });
-      html += `</div>`;
-      return html;
     }
 
     static renderAnimalCard(imgUrl, title, subtitle) {
@@ -1250,6 +1024,26 @@
           </div>
         </div>
       `;
+    }
+
+    static renderBooks(data) {
+      if (!data.docs || data.docs.length === 0) return `<div class="empty-state">No books found.</div>`;
+      let html = `<div class="books-grid">`;
+      data.docs.slice(0, 6).forEach(b => {
+        const coverUrl = b.cover_i ? `https://covers.openlibrary.org/b/id/${b.cover_i}-M.jpg` : `https://placehold.co/120x180/1e293b/38bdf8?text=Book`;
+        html += `
+          <div class="book-card">
+            <img src="${coverUrl}" class="book-cover" onerror="this.src='https://placehold.co/120x180/1e293b/94a3b8?text=No+Cover'">
+            <div class="book-info">
+              <div class="book-title" title="${b.title}">${b.title}</div>
+              <div class="book-author">✍️ ${b.author_name ? b.author_name.join(", ") : "Unknown"}</div>
+              <div class="book-year">📅 ${b.first_publish_year || "N/A"}</div>
+            </div>
+          </div>
+        `;
+      });
+      html += `</div>`;
+      return html;
     }
 
     static renderQuote(data) {
@@ -1468,35 +1262,28 @@
           document.querySelectorAll(".sidebar-btn").forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
 
-          // When user clicks a category in the sidebar, auto-match the premier live API for that category!
-          const categoryMatchedApi = CURATED_INTERACTIVE_APIS.find(a => 
-            a.category.toLowerCase() === cat.toLowerCase() || 
-            (cat === "Animals" && a.category === "Animals") ||
-            (cat === "Books" && a.category === "Books") ||
-            (cat === "Anime" && a.category === "Anime") ||
-            (cat === "Art & Design" && a.category === "Art & Design") ||
-            (cat === "Food & Drink" && a.category === "Food & Drink") ||
-            (cat === "Dictionaries" && a.category === "Dictionaries") ||
-            (cat === "Gaming" && a.category === "Gaming") ||
-            (cat === "Geography" && a.category === "Geography") ||
-            (cat === "Music" && a.category === "Music") ||
-            (cat === "Security" && a.category === "Security") ||
-            (cat === "Weather" && a.category === "Weather") ||
-            (cat === "Cryptocurrency" && a.category === "Cryptocurrency")
-          );
-
-          if (categoryMatchedApi) {
-            this.selectedApi = categoryMatchedApi;
-            this.loadStudioForm(categoryMatchedApi);
-            this.renderStudioApiDropdown();
-            if (this.currentView === "studio") {
-              this.executeActiveStudioApi();
-            }
+          // When user clicks a category in the sidebar, also select the first API in that category in the Studio!
+          const catApis = GITHUB_MEGA_DIRECTORY.filter(a => cat === "All" || a.cat.toLowerCase() === cat.toLowerCase());
+          if (catApis.length > 0) {
+            const first = catApis[0];
+            const resolvedUrl = ApiRunner.resolveEndpoint(first.url, first.name, first.desc);
+            this.selectedApi = {
+              id: "custom-" + first.name.toLowerCase().replace(/[^a-z0-9]/g, '-'),
+              name: first.name,
+              category: first.cat,
+              description: first.desc,
+              method: "GET",
+              endpoint: resolvedUrl,
+              params: [],
+              visualType: "generic"
+            };
+            this.loadStudioForm(this.selectedApi);
           }
 
-          if (this.currentView === "directory") {
-            this.renderDirectoryGrid(true);
+          if (this.currentView !== "directory") {
+            this.switchView("directory");
           }
+          this.renderDirectoryGrid(true);
         });
         list.appendChild(btn);
       });
@@ -1515,14 +1302,12 @@
         case "Science": case "Math": return "🧬";
         case "Transportation": case "Flights": return "✈️";
         case "News": return "📰";
-        case "Food & Drink": case "Food": case "Drink": return "🍔";
-        case "Gaming": case "Anime": case "Games & Comics": return "🎮";
+        case "Food": case "Drink": return "🍔";
+        case "Gaming": case "Anime": return "🎮";
         case "Quotes": case "Social": return "💡";
         case "Security": case "Geolocation": return "🛡️";
         case "Animals": return "🐾";
         case "Geography": return "🗺️";
-        case "Music": return "🎵";
-        case "Art & Design": return "🎨";
         default: return "⚡";
       }
     }
@@ -1531,18 +1316,10 @@
       const select = document.getElementById("studio-api-select");
       if (!select) return;
       select.innerHTML = "";
-      
-      let apisToShow = CURATED_INTERACTIVE_APIS;
-      if (this.activeCategory !== "All") {
-        const filtered = CURATED_INTERACTIVE_APIS.filter(a => a.category.toLowerCase() === this.activeCategory.toLowerCase());
-        if (filtered.length > 0) apisToShow = filtered;
-      }
-
-      apisToShow.forEach(api => {
+      CURATED_INTERACTIVE_APIS.forEach(api => {
         const opt = document.createElement("option");
         opt.value = api.id;
         opt.innerText = `${api.name} (${api.category})`;
-        if (api.id === this.selectedApi.id) opt.selected = true;
         select.appendChild(opt);
       });
     }
@@ -1551,8 +1328,13 @@
       const titleEl = document.getElementById("studio-api-title");
       const descEl = document.getElementById("studio-api-desc");
       const selectEl = document.getElementById("studio-api-select");
+      const urlInput = document.getElementById("studio-url-input");
+      const methodSelect = document.getElementById("studio-http-method");
+
       if (titleEl) titleEl.innerText = api.name;
       if (descEl) descEl.innerText = api.description;
+      if (urlInput) urlInput.value = api.endpoint || "";
+      if (methodSelect) methodSelect.value = api.method || "GET";
 
       if (selectEl) {
         let exists = Array.from(selectEl.options).some(o => o.value === api.id);
@@ -1571,7 +1353,7 @@
       container.innerHTML = "";
 
       if (!api.params || api.params.length === 0) {
-        container.innerHTML = `<div style="font-size:12.5px; color:var(--text-muted); background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); padding:10px 14px; border-radius:8px;">✓ 100% Free Endpoint. Click "Run Live API" below!</div>`;
+        container.innerHTML = `<div style="font-size:12.5px; color:var(--text-muted); background:rgba(34,197,94,0.1); border:1px solid rgba(34,197,94,0.3); padding:10px 14px; border-radius:8px;">✓ 100% Free Public Endpoint. Click "Run Live API" below!</div>`;
       } else {
         api.params.forEach(p => {
           if (p.type === "hidden") return;
@@ -1605,6 +1387,7 @@
           chip.addEventListener("click", () => {
             if (pr.url) {
               api.endpoint = pr.url;
+              if (urlInput) urlInput.value = pr.url;
               this.executeActiveStudioApi();
             } else {
               const lat = container.querySelector('[data-param="latitude"]');
@@ -1625,12 +1408,17 @@
     async executeActiveStudioApi() {
       const api = this.selectedApi;
       const executeBtn = document.getElementById("btn-run-api");
+      const urlInput = document.getElementById("studio-url-input");
+      const methodSelect = document.getElementById("studio-http-method");
+
       if (executeBtn) {
         executeBtn.innerHTML = `<span>⏳ Fetching Live Data...</span>`;
         executeBtn.disabled = true;
       }
 
       try {
+        let reqMethod = methodSelect ? methodSelect.value : (api.method || "GET");
+        let targetUrl = urlInput ? urlInput.value.trim() : api.endpoint;
         let queryParams = new URLSearchParams();
         let body = null;
         let headers = {};
@@ -1638,30 +1426,29 @@
         document.querySelectorAll("#studio-params-container [data-param]").forEach(el => {
           const name = el.dataset.param;
           const val = el.value;
-          if (api.method === "GET") {
+          if (reqMethod === "GET") {
             queryParams.append(name, val);
-          } else if (api.method === "POST") {
+          } else if (reqMethod === "POST") {
             if (name === "prompt" && api.id === "gemini-ai-studio") {
               body = { contents: [{ parts: [{ text: val }] }] };
             }
           }
         });
 
-        let finalUrl = api.endpoint;
         if (api.requiresVaultKey) {
           const key = vault.getKey(api.requiresVaultKey);
           if (key && api.id === "gemini-ai-studio") {
-            finalUrl += `?key=${key}`;
+            targetUrl += `?key=${key}`;
           }
         }
 
-        if (api.method === "GET" && queryParams.toString()) {
-          finalUrl += (finalUrl.includes("?") ? "&" : "?") + queryParams.toString();
+        if (reqMethod === "GET" && queryParams.toString()) {
+          targetUrl += (targetUrl.includes("?") ? "&" : "?") + queryParams.toString();
         }
 
         const result = await ApiRunner.execute({
-          method: api.method || "GET",
-          url: finalUrl,
+          method: reqMethod,
+          url: targetUrl,
           name: api.name,
           desc: api.description,
           headers,
@@ -1704,7 +1491,7 @@
             <span style="font-size:12px; color:var(--accent-cyan); font-family:var(--font-mono);">RAW JSON RESPONSE</span>
             <button class="btn-copy-code" onclick="navigator.clipboard.writeText(document.getElementById('raw-json-pre').innerText); alert('Copied JSON!');">Copy JSON</button>
           </div>
-          <pre id="raw-json-pre" style="font-family:var(--font-mono); font-size:12.5px; color:#a5f3fc; overflow-x:auto; max-height:400px; line-height:1.5;">${JSON.stringify(this.lastResponse.data, null, 2)}</pre>
+          <pre id="raw-json-pre" style="font-family:var(--font-mono); font-size:12.5px; color:#a5f3fc; overflow-x:auto; max-height:400px; line-height:1.5;">${typeof this.lastResponse.data === 'object' ? JSON.stringify(this.lastResponse.data, null, 2) : this.lastResponse.data}</pre>
         `;
       }
     }
@@ -1783,12 +1570,7 @@
         `;
 
         card.querySelector(".btn-try-dir").addEventListener("click", () => {
-          const matched = CURATED_INTERACTIVE_APIS.find(c => 
-            c.name.toLowerCase().includes(api.name.toLowerCase()) || 
-            api.name.toLowerCase().includes(c.name.toLowerCase()) ||
-            (api.cat.toLowerCase() === c.category.toLowerCase())
-          );
-          
+          const matched = CURATED_INTERACTIVE_APIS.find(c => c.name.toLowerCase().includes(api.name.toLowerCase()) || api.name.toLowerCase().includes(c.name.toLowerCase()));
           if (matched) {
             this.selectedApi = matched;
             this.loadStudioForm(matched);

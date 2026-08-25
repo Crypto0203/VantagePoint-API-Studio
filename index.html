@@ -112,6 +112,19 @@
             </select>
           </div>
 
+          <div class="param-group">
+            <label class="param-label">Live API Request URL:</label>
+            <div style="display:flex; gap:8px; align-items:center;">
+              <select id="studio-http-method" class="param-select" style="width:88px; padding:10px 6px; font-weight:700; color:var(--accent-cyan);">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+              </select>
+              <input type="text" id="studio-url-input" class="param-input" style="flex:1; font-family:var(--font-mono); font-size:12.5px; color:#38bdf8;" placeholder="https://api.example.com/endpoint">
+            </div>
+          </div>
+
           <div id="studio-params-container" style="display:flex; flex-direction:column; gap:14px;">
             <!-- Dynamic parameter inputs rendered here -->
           </div>
