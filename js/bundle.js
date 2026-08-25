@@ -60,6 +60,19 @@
 ];
   const CURATED_INTERACTIVE_APIS = [
   {
+    "id": "ip-geolocation-isp",
+    "name": "IP Geolocation & ISP Detector",
+    "category": "Security",
+    "description": "Detect visitor public IP address, country, city, ISP organization, coordinates, and timezone.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://ipwho.is/",
+    "params": [],
+    "visualType": "ip"
+  },
+  {
     "id": "coingecko-simple-price",
     "name": "CoinGecko Live Crypto Tracker",
     "category": "Cryptocurrency",
@@ -119,58 +132,6 @@
       }
     ],
     "visualType": "crypto"
-  },
-  {
-    "id": "dog-ceo-breeds",
-    "name": "Dog CEO & Dog Pics API",
-    "category": "Animals",
-    "description": "Instant random high-definition dog pictures and Stanford breed dataset.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://dog.ceo/api/breeds/image/random",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "cataas-cat-api",
-    "name": "Cataas (Cat as a Service)",
-    "category": "Animals",
-    "description": "Instant random cat pictures, tags, and animated GIFs.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://cataas.com/cat?json=true",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "random-fox-api",
-    "name": "Random Fox Wildlife Photography",
-    "category": "Animals",
-    "description": "Curated collection of high-resolution wild fox photography.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://randomfox.ca/floof/",
-    "params": [],
-    "visualType": "animal"
-  },
-  {
-    "id": "cat-facts-api",
-    "name": "Cat Facts Science & Trivia",
-    "category": "Animals",
-    "description": "Fascinating biological and historical facts about felines.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://catfact.ninja/fact",
-    "params": [],
-    "visualType": "quote"
   },
   {
     "id": "open-meteo-weather",
@@ -239,6 +200,58 @@
       }
     ],
     "visualType": "weather"
+  },
+  {
+    "id": "dog-ceo-breeds",
+    "name": "Dog CEO & Dog Pics API",
+    "category": "Animals",
+    "description": "Instant random high-definition dog pictures and Stanford breed dataset.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://dog.ceo/api/breeds/image/random",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "cataas-cat-api",
+    "name": "Cataas (Cat as a Service)",
+    "category": "Animals",
+    "description": "Instant random cat pictures, tags, and animated GIFs.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://cataas.com/cat?json=true",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "random-fox-api",
+    "name": "Random Fox Wildlife Photography",
+    "category": "Animals",
+    "description": "Curated collection of high-resolution wild fox photography.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://randomfox.ca/floof/",
+    "params": [],
+    "visualType": "animal"
+  },
+  {
+    "id": "cat-facts-api",
+    "name": "Cat Facts Science & Trivia",
+    "category": "Animals",
+    "description": "Fascinating biological and historical facts about felines.",
+    "auth": "No Auth",
+    "cors": "yes",
+    "https": true,
+    "method": "GET",
+    "endpoint": "https://catfact.ninja/fact",
+    "params": [],
+    "visualType": "quote"
   },
   {
     "id": "official-joke-api",
@@ -401,19 +414,6 @@
     "visualType": "quote"
   },
   {
-    "id": "ip-api-geolocation",
-    "name": "IP Geolocation & ISP Detector",
-    "category": "Security",
-    "description": "Detect visitor IP address, country, city, ISP organization, zip code, timezone, and coordinates.",
-    "auth": "No Auth",
-    "cors": "yes",
-    "https": true,
-    "method": "GET",
-    "endpoint": "https://ipapi.co/json/",
-    "params": [],
-    "visualType": "ip"
-  },
-  {
     "id": "frankfurter-forex",
     "name": "Frankfurter Currency Exchange Rates",
     "category": "Finance",
@@ -507,6 +507,10 @@
 
   // Smart Endpoint Normalizer: Maps keywords to real live JSON endpoints
   const ENDPOINT_NORMALIZER = {
+    "ip": "https://ipwho.is/",
+    "ipapi": "https://ipwho.is/",
+    "geolocation": "https://ipwho.is/",
+    "ipify": "https://api.ipify.org?format=json",
     "dog": "https://dog.ceo/api/breeds/image/random",
     "dog.ceo": "https://dog.ceo/api/breeds/image/random",
     "dogs": "https://dog.ceo/api/breeds/image/random",
@@ -545,9 +549,6 @@
     "forex": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
     "frankfurter": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
     "exchange": "https://api.frankfurter.app/latest?from=USD&to=INR,EUR,GBP",
-    "ip": "https://ipapi.co/json/",
-    "ipapi": "https://ipapi.co/json/",
-    "ipify": "https://api.ipify.org?format=json",
     "book": "https://openlibrary.org/search.json?q=artificial+intelligence&limit=6",
     "openlibrary": "https://openlibrary.org/search.json?q=artificial+intelligence&limit=6",
     "posts": "https://jsonplaceholder.typicode.com/posts?_limit=6",
@@ -711,8 +712,7 @@
               type: "portal",
               title: name || "Developer Portal & SDK",
               desc: desc || "This service provides developer SDKs, smart contracts, or tokenized endpoints.",
-              docsUrl: targetUrl,
-              codeUrl: targetUrl
+              docsUrl: targetUrl
             };
           } else {
             responseData = rawText;
@@ -749,8 +749,7 @@
                 type: "portal",
                 title: name || "Developer Portal & SDK",
                 desc: desc || "This service provides developer SDKs, smart contracts, or tokenized endpoints.",
-                docsUrl: targetUrl,
-                codeUrl: targetUrl
+                docsUrl: targetUrl
               };
             } else {
               responseData = rawText;
@@ -768,7 +767,6 @@
             method
           };
         } catch (errProxy) {
-          // Step 3: Present clean Portal Overview rather than failing
           const endTime = performance.now();
           return {
             success: true,
@@ -780,8 +778,7 @@
               type: "portal",
               title: name || "API Documentation & Endpoints",
               desc: desc || "This API provides enterprise developer endpoints, OAuth credentials, or blockchain contracts.",
-              docsUrl: targetUrl,
-              codeUrl: targetUrl
+              docsUrl: targetUrl
             },
             url: targetUrl,
             method
@@ -804,8 +801,8 @@
             <p style="font-size:13.5px; color:var(--text-muted); max-width:550px; margin:0 auto 18px; line-height:1.6;">${data.desc}</p>
             <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
               <a href="${data.docsUrl}" target="_blank" class="btn-card-action" style="padding:10px 22px; font-weight:700; background:var(--accent-cyan); color:black; border-radius:8px;">Open Official Documentation ↗</a>
-              <button onclick="window.app.selectInteractiveById('coingecko-simple-price')" class="btn-card-action" style="padding:10px 20px; border-radius:8px;">Try Crypto Sandbox</button>
-              <button onclick="window.app.selectInteractiveById('dog-ceo-breeds')" class="btn-card-action" style="padding:10px 20px; border-radius:8px;">Try Dog Pics</button>
+              <button onclick="window.app.selectInteractiveById('ip-geolocation-isp')" class="btn-card-action" style="padding:10px 20px; border-radius:8px;">Try IP Geolocation</button>
+              <button onclick="window.app.selectInteractiveById('coingecko-simple-price')" class="btn-card-action" style="padding:10px 20px; border-radius:8px;">Try Crypto Tracker</button>
             </div>
           </div>
         `;
@@ -821,17 +818,14 @@
       if (data.url && typeof data.url === "string" && (data.url.includes(".jpg") || data.url.includes(".png") || data.url.includes("cataas.com"))) {
         return this.renderAnimalCard(data.url, "Cataas Cat API", data.tags ? data.tags.join(", ") : "Cute Cat");
       }
-      if (Array.isArray(data) && data.length > 0 && typeof data[0] === "string" && data[0].includes("http")) {
-        return this.renderAnimalCard(data[0], "Shiba Inu / Animal API", "Cute Animal");
-      }
 
       switch (type) {
+        case "ip": return this.renderIp(data);
         case "animal": return this.renderAnimal(data);
         case "crypto": return this.renderCrypto(data);
         case "weather": return this.renderWeather(data);
         case "books": return this.renderBooks(data);
         case "quote": return this.renderQuote(data);
-        case "ip": return this.renderIp(data);
         case "forex": return this.renderForex(data);
         case "joke": return this.renderJoke(data);
         case "pokemon": return this.renderPokemon(data);
@@ -843,6 +837,34 @@
         case "ai": return this.renderAi(data);
         default: return `<pre style="font-family:var(--font-mono); color:#a5f3fc; max-height:360px; overflow:auto; padding:12px; line-height:1.5;">${JSON.stringify(data, null, 2)}</pre>`;
       }
+    }
+
+    static renderIp(data) {
+      const ip = data.ip || "Your Public IP";
+      const city = data.city || "Unknown City";
+      const country = data.country || data.country_name || "Unknown Country";
+      const flag = data.flag && data.flag.emoji ? data.flag.emoji : "🌐";
+      const isp = (data.connection && data.connection.isp) ? data.connection.isp : (data.isp || data.org || "Internet Provider");
+      const timezone = (data.timezone && data.timezone.id) ? data.timezone.id : (data.timezone || "UTC");
+      const coords = (data.latitude && data.longitude) ? `${data.latitude}°, ${data.longitude}°` : "Auto-Resolved";
+
+      return `
+        <div class="ip-visual-card" style="background:rgba(255,255,255,0.03); border:1px solid var(--border-glass); padding:24px; border-radius:var(--radius-lg);">
+          <div class="ip-header" style="display:flex; align-items:center; gap:16px; margin-bottom:18px;">
+            <div style="font-size:42px;">${flag}</div>
+            <div>
+              <div class="ip-badge" style="font-size:22px; font-weight:800; color:white;">${ip}</div>
+              <div class="ip-org" style="font-size:13px; color:var(--accent-cyan); margin-top:2px;">⚡ ${isp}</div>
+            </div>
+          </div>
+          <div class="ip-grid">
+            <div class="ip-item"><span>City:</span> <strong>${city}</strong></div>
+            <div class="ip-item"><span>Country:</span> <strong>${country}</strong></div>
+            <div class="ip-item"><span>Timezone:</span> <strong>${timezone}</strong></div>
+            <div class="ip-item"><span>Coordinates:</span> <strong>${coords}</strong></div>
+          </div>
+        </div>
+      `;
     }
 
     static renderAnimalCard(imgUrl, title, subtitle) {
@@ -1049,22 +1071,6 @@
           <div class="quote-mark">“</div>
           <div class="quote-text">${advice}</div>
           <div class="quote-author">— Live Public Fact / Quote API</div>
-        </div>
-      `;
-    }
-
-    static renderIp(data) {
-      return `
-        <div class="ip-visual-card">
-          <div class="ip-header">
-            <div class="ip-badge">🌐 ${data.ip || "Your IP"}</div>
-            <div class="ip-org">${data.org || data.asn || "Network"}</div>
-          </div>
-          <div class="ip-grid">
-            <div class="ip-item"><span>City:</span> <strong>${data.city || "N/A"}</strong></div>
-            <div class="ip-item"><span>Country:</span> <strong>${data.country_name || "N/A"}</strong></div>
-            <div class="ip-item"><span>Timezone:</span> <strong>${data.timezone || "N/A"}</strong></div>
-          </div>
         </div>
       `;
     }
@@ -1482,8 +1488,8 @@
     updateCodeDisplay() {
       if (!this.lastResponse) return;
       const codes = CodeGenerator.generate(
-        this.selectedApi.method || "GET",
-        this.lastResponse.url,
+        this.lastResponse.method || this.selectedApi.method || "GET",
+        this.lastResponse.url || this.selectedApi.endpoint,
         this.lastResponse.headers || {},
         null
       );
