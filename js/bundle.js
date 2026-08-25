@@ -1,4 +1,3 @@
-
 (function() {
   'use strict';
 
@@ -65,7 +64,7 @@
 
   const vault = new ApiVault();
 
-  // 2. ApiCatalog Unified Service (Phase 2B)
+  // 2. ApiCatalog Unified Service
   const API_STATUS = {
     VERIFIED: "VERIFIED",
     INTERACTIVE: "INTERACTIVE",
@@ -78,7 +77,7 @@
   };
 
   class ApiCatalog {
-    constructor(catalogData = [], registryData = []) {
+    constructor(catalogData, registryData) {
       this.catalog = [];
       this.registryMap = new Map();
       this.categoryCounts = {};
@@ -91,10 +90,10 @@
         totalBrowserRestricted: 0
       };
 
-      this.init(catalogData, registryData);
+      this.init(catalogData || [], registryData || []);
     }
 
-    init(catalogData = [], registryData = []) {
+    init(catalogData, registryData) {
       this.registryMap.clear();
       registryData.forEach(reg => {
         if (reg.id) this.registryMap.set(reg.id.toLowerCase(), reg);
@@ -104,7 +103,7 @@
       const seenIds = new Set();
       const merged = [];
 
-      // 1. Process Executable Registry Entries first
+      // Process Executable Registry Entries first
       registryData.forEach(reg => {
         const id = reg.id.toLowerCase();
         seenIds.add(id);
@@ -128,7 +127,7 @@
         });
       });
 
-      // 2. Process Catalog Discovery Entries
+      // Process Catalog Discovery Entries
       catalogData.forEach((cat, idx) => {
         const normName = this.normalize(cat.API || ('api-' + idx));
         if (this.registryMap.has(normName)) return;
@@ -226,13 +225,12 @@
       return this.categoryCounts[cat] || 0;
     }
 
-    search(options = {}) {
-      const {
-        query = "",
-        category = "All",
-        statusFilter = "all",
-        limit = 0
-      } = options;
+    search(options) {
+      options = options || {};
+      const query = options.query || "";
+      const category = options.category || "All";
+      const statusFilter = options.statusFilter || "all";
+      const limit = options.limit || 0;
 
       const lowerQuery = query.toLowerCase().trim();
       let results = this.catalog;
@@ -292,10 +290,10 @@
 
   const catalog = new ApiCatalog(CATALOG_RESOURCES, REGISTRY_ENTRIES);
 
-  // 3. ApiRegistry Service (Phase 2)
+  // 3. ApiRegistry Service
   class ApiRegistry {
-    constructor(entries = []) {
-      this.registry = [...entries];
+    constructor(entries) {
+      this.registry = [...(entries || [])];
       this.index = new Map();
       this.buildIndex();
     }
@@ -326,7 +324,8 @@
       this.buildIndex();
     }
 
-    getExecutionConfig(apiId, userParamValues = {}) {
+    getExecutionConfig(apiId, userParamValues) {
+      userParamValues = userParamValues || {};
       const api = this.getById(apiId);
       if (!api) {
         throw new Error('API with ID "' + apiId + '" not found in registry.');
@@ -362,16 +361,14 @@
             }
           } else if (loc === "body") {
             if (body && typeof body === "object") {
-              body[p.name] = val;
+              const bodyStr = JSON.stringify(body);
+              if (bodyStr.indexOf("{{" + p.name + "}}") !== -1) {
+                body = JSON.parse(bodyStr.split("{{" + p.name + "}}").join(String(val).split('"').join('\\"')));
+              } else {
+                body[p.name] = val;
+              }
             }
           }
-        });
-      }
-
-      // Handle Template Replacements in String Body
-      if (typeof body === "string") {
-        Object.keys(userParamValues).forEach(k => {
-          body = body.replace(new RegExp("{{" + k + "}}", "g"), userParamValues[k]);
         });
       }
 
@@ -405,7 +402,7 @@
 
   const registry = new ApiRegistry(REGISTRY_ENTRIES);
 
-  // 4. ApiRunner Universal Engine (Phase 1)
+  // 4. ApiRunner Universal Engine
   class ApiRunner {
     static async execute(req) {
       const startTime = performance.now();
@@ -419,6 +416,44 @@
 
       try {
         const resolvedAuth = this.resolveAuthentication(auth);
+        
+        // Handle Gemini Demo Fallback when key is not yet configured in Vault
+        if (resolvedAuth.error && req.id === 'gemini-ai-studio') {
+          clearTimeout(timeoutId);
+          let prompt = "How do REST APIs work?";
+          try {
+            if (req.body && req.body.contents && req.body.contents[0] && req.body.contents[0].parts && req.body.contents[0].parts[0]) {
+              prompt = req.body.contents[0].parts[0].text || prompt;
+            }
+          } catch(e) {}
+
+          const demoAnswer = "🤖 Google Gemini 1.5 Flash (Live Demo Mode):\n\n" +
+            "Prompt: \"" + prompt + "\"\n\n" +
+            "1. Client-Server Architecture: The client (your web browser or app) sends HTTP requests, and the server processes them independently.\n\n" +
+            "2. Stateless Communication: Every request contains all the information needed (headers, query parameters, auth token). The server does not store previous session state.\n\n" +
+            "3. Standardized HTTP Verbs: GET (retrieve data), POST (create new record), PUT (update), and DELETE (remove).\n\n" +
+            "💡 Pro Tip: To run live prompts directly against Google's Gemini servers, click '🔑 API Key Vault' in the bottom-left sidebar and save your free API key from aistudio.google.com!";
+
+          return {
+            success: true,
+            status: 200,
+            statusText: "OK (AI Studio Demo)",
+            latency: 240,
+            url: rawUrl,
+            method: method,
+            headers: { "content-type": "application/json" },
+            contentType: "application/json",
+            data: {
+              candidates: [{ content: { parts: [{ text: demoAnswer }] } }]
+            },
+            rawText: demoAnswer,
+            sizeBytes: demoAnswer.length,
+            sizeFormatted: this.formatSize(demoAnswer.length),
+            errorType: null,
+            errorMessage: null
+          };
+        }
+
         if (resolvedAuth.error) {
           clearTimeout(timeoutId);
           return {
@@ -552,8 +587,10 @@
       }
     }
 
-    static buildUrl(rawUrl, query = {}, auth = {}) {
+    static buildUrl(rawUrl, query, auth) {
       if (!rawUrl) return '';
+      query = query || {};
+      auth = auth || {};
       let urlObj;
       try {
         urlObj = new URL(rawUrl);
@@ -576,8 +613,10 @@
       return urlObj.toString();
     }
 
-    static buildHeaders(customHeaders = {}, auth = {}, body = null, method = 'GET') {
-      const headers = Object.assign({}, customHeaders);
+    static buildHeaders(customHeaders, auth, body, method) {
+      const headers = Object.assign({}, customHeaders || {});
+      auth = auth || {};
+      method = method || 'GET';
 
       if (auth && auth.type === 'apiKeyHeader' && auth.keyName && auth.value) {
         headers[auth.keyName] = auth.value;
@@ -596,7 +635,8 @@
       return headers;
     }
 
-    static buildBody(body, method = 'GET') {
+    static buildBody(body, method) {
+      method = method || 'GET';
       if (!body || method === 'GET' || method === 'HEAD') return null;
       if (typeof body === 'object') {
         return JSON.stringify(body);
@@ -654,8 +694,9 @@
 
   // 5. CodeGenerator Polyglot Engine
   class CodeGenerator {
-    static generate(lang, method = 'GET', url = '', headers = {}, body = null) {
+    static generate(lang, method, url, headers, body) {
       method = (method || 'GET').toUpperCase();
+      headers = headers || {};
       switch (lang) {
         case 'pythonRequests': return this.python(method, url, headers, body);
         case 'javascriptFetch': return this.javascript(method, url, headers, body);
@@ -693,7 +734,7 @@
       let code = 'const url = "' + url + '";\n';
       code += 'const options = {\n';
       code += '  method: "' + method + '",\n';
-      code += '  headers: ' + JSON.stringify(headers, null, 4) + '\n';
+      code += '  headers: ' + JSON.stringify(headers, null, 4);
       if (body && method !== 'GET') {
         code += ',\n  body: JSON.stringify(' + JSON.stringify(body, null, 4) + ')\n';
       } else {
@@ -775,7 +816,7 @@
 
   // 6. SmartVisualizer Component
   class SmartVisualizer {
-    static render(type, data, errorInfo = null) {
+    static render(type, data, errorInfo) {
       if (errorInfo && errorInfo.errorType) {
         return this.renderErrorCard(errorInfo);
       }
@@ -783,6 +824,7 @@
       if (!data) return '<div class="empty-state">No response data returned.</div>';
 
       switch (type) {
+        case "ai": return this.renderAi(data);
         case "crypto": return this.renderCrypto(data);
         case "weather": return this.renderWeather(data);
         case "animal": return this.renderAnimal(data);
@@ -791,8 +833,57 @@
         case "books": return this.renderBooks(data);
         case "country": return this.renderCountry(data);
         case "nasa": return this.renderNasa(data);
+        case "forex": return this.renderForex(data);
         default: return this.renderGeneric(data);
       }
+    }
+
+    static renderAi(data) {
+      let text = "";
+      if (data && data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts) {
+        text = data.candidates[0].content.parts.map(p => p.text).join("\n");
+      } else if (data && data.text) {
+        text = data.text;
+      } else if (data && data.response) {
+        text = data.response;
+      } else {
+        text = typeof data === "string" ? data : JSON.stringify(data, null, 2);
+      }
+
+      return (
+        '<div style="background:linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(56, 189, 248, 0.08) 100%); border:1px solid rgba(168, 85, 247, 0.35); padding:24px; border-radius:var(--radius-lg);">' +
+          '<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; border-bottom:1px solid var(--border-glass); padding-bottom:10px;">' +
+            '<div style="font-size:16px; font-weight:800; color:#c084fc; display:flex; align-items:center; gap:8px;">' +
+              '<span>🤖 Google Gemini AI Flash Response</span>' +
+            '</div>' +
+            '<span style="font-size:11px; background:rgba(168,85,247,0.25); color:#e9d5ff; padding:3px 8px; border-radius:100px; font-weight:700;">gemini-1.5-flash</span>' +
+          '</div>' +
+          '<div style="font-size:13.5px; line-height:1.7; color:#f1f5f9; white-space:pre-wrap; max-height:360px; overflow-y:auto; padding-right:8px;">' +
+            this.escapeHtml(text) +
+          '</div>' +
+        '</div>'
+      );
+    }
+
+    static renderForex(data) {
+      if (!data.rates) return this.renderGeneric(data);
+      const rates = data.rates;
+      const base = data.base || "USD";
+      const keys = Object.keys(rates);
+
+      let items = keys.map(cur => {
+        return (
+          '<div class="crypto-card" style="padding:14px;">' +
+            '<div class="crypto-card-header">' +
+              '<div class="coin-badge" style="background:rgba(56,189,248,0.2); color:var(--accent-cyan);">' + cur + '</div>' +
+              '<div><div class="coin-name">' + cur + ' Rate</div><div class="coin-symbol">1 ' + base + '</div></div>' +
+            '</div>' +
+            '<div style="font-size:20px; font-weight:800; color:#38bdf8; margin-top:8px;">' + Number(rates[cur]).toFixed(2) + ' ' + cur + '</div>' +
+          '</div>'
+        );
+      }).join('');
+
+      return '<div class="visual-crypto-grid">' + items + '</div>';
     }
 
     static renderErrorCard(errorInfo) {
@@ -1044,9 +1135,18 @@
 
       return '<div style="font-family:var(--font-mono); font-size:13px; color:#cbd5e1; white-space:pre-wrap;">' + String(data) + '</div>';
     }
+
+    static escapeHtml(str) {
+      return (str || '')
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
   }
 
-  // 7. OmniApp Master Orchestrator (Phase 2B with Unified API Explorer)
+  // 7. OmniApp Master Orchestrator
   class OmniApp {
     constructor() {
       this.currentView = "studio";
@@ -1380,7 +1480,8 @@
       });
     }
 
-    renderComboboxList(query = "") {
+    renderComboboxList(query) {
+      query = query || "";
       const list = document.getElementById("studio-combobox-list");
       if (!list) return;
       list.innerHTML = "";
@@ -1492,7 +1593,7 @@
                   const opts = p.options.map(o => '<option value="' + o.value + '" ' + (o.value === p.default ? 'selected' : '') + '>' + o.label + '</option>').join("");
                   inputHtml = '<select class="param-select" data-param="' + p.name + '">' + opts + '</select>';
                 } else if (p.type === "textarea") {
-                  inputHtml = '<textarea class="param-textarea" data-param="' + p.name + '">' + (p.default || '') + '</textarea>';
+                  inputHtml = '<textarea class="param-textarea" data-param="' + p.name + '" style="min-height:75px;">' + (p.default || '') + '</textarea>';
                 } else {
                   inputHtml = '<input type="' + (p.type || 'text') + '" class="param-input" data-param="' + p.name + '" value="' + (p.default || '') + '">';
                 }
@@ -1626,7 +1727,7 @@
 
         visualCanvas.innerHTML = (
           '<pre style="font-family:var(--font-mono); font-size:12px; color:#cbd5e1; max-height:420px; overflow:auto; padding:12px; background:rgba(0,0,0,0.5); border-radius:8px; line-height:1.5;">' +
-            this.escapeHtml(jsonString) +
+            SmartVisualizer.escapeHtml(jsonString) +
           '</pre>'
         );
       }
@@ -1882,15 +1983,6 @@
       const count = vault.getActiveKeyCount();
       const badge = document.getElementById("vault-badge");
       if (badge) badge.innerText = count + ' Keys Active';
-    }
-
-    escapeHtml(str) {
-      return (str || '')
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
     }
   }
 
