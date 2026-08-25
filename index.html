@@ -139,10 +139,11 @@
           
           <!-- Live Terminal Status Bar -->
           <div class="status-bar-card">
-            <div class="status-left">
+            <div class="status-left" style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
               <span id="status-method" class="http-method-badge">GET</span>
               <span id="status-code" class="http-status-badge success">200 OK</span>
               <span id="status-latency" class="latency-tag">⏱️ 140 ms</span>
+              <span id="status-size" class="latency-tag" style="background:rgba(255,255,255,0.05); color:var(--text-muted);">📦 0 B</span>
             </div>
 
             <div class="output-view-toggle">
