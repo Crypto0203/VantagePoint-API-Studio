@@ -67,12 +67,16 @@
       <div class="hero-banner">
         <div class="hero-text">
           <h2>VantagePoint API Developer Studio</h2>
-          <p>Discover, test, and visualize 1,689+ free public APIs with zero backend code. Generate instant Python, JavaScript, cURL, Go, and Flutter snippets in 1 click.</p>
+          <p>Discover, test, and visualize 1,689+ public APIs with zero backend code. Generate instant Python, JavaScript, cURL, Go, and Flutter snippets in 1 click.</p>
         </div>
         <div class="stats-badge-group">
           <div class="stat-box">
-            <div class="stat-number">1,689+</div>
-            <div class="stat-label">Public APIs</div>
+            <div class="stat-number" id="metric-catalog-count">1,689+</div>
+            <div class="stat-label">Cataloged APIs</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number" id="metric-interactive-count" style="color:#4ade80;">20+</div>
+            <div class="stat-label">Interactive Sandboxes</div>
           </div>
           <div class="stat-box">
             <div class="stat-number">100% Free</div>
@@ -91,7 +95,7 @@
           <span>⚡ Interactive Studio Playground</span>
         </button>
         <button class="view-tab-btn" data-view="directory">
-          <span>📚 GitHub Public APIs Catalog</span>
+          <span>📚 GitHub Public APIs Catalog (1,689+)</span>
         </button>
       </div>
 
@@ -105,33 +109,71 @@
             <p id="studio-api-desc">Get real-time prices, market cap, and 24h volume for Bitcoin, Ethereum, Solana, and 500+ coins.</p>
           </div>
 
-          <div class="param-group">
-            <label class="param-label">Select Interactive API:</label>
-            <select id="studio-api-select" class="api-select-dropdown">
-              <!-- Injected via app.js -->
-            </select>
-          </div>
+          <!-- Scalable Searchable Combobox Explorer (1,689+ APIs) -->
+          <div class="param-group" style="position:relative;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <label class="param-label" style="margin-bottom:0;">Select or Search API (1,689+ Total):</label>
+              <span id="studio-api-status-badge" class="combobox-item-badge interactive">🟢 Interactive Sandbox</span>
+            </div>
+            
+            <div class="combobox-wrapper">
+              <input type="text" id="studio-combobox-input" class="param-input" placeholder="🔍 Type to search 1,689+ public APIs..." autocomplete="off">
+              <button id="studio-combobox-toggle" class="combobox-toggle-btn" type="button">▾</button>
+            </div>
 
-          <div class="param-group">
-            <label class="param-label">Live API Request URL:</label>
-            <div style="display:flex; gap:8px; align-items:center;">
-              <select id="studio-http-method" class="param-select" style="width:88px; padding:10px 6px; font-weight:700; color:var(--accent-cyan);">
-                <option value="GET">GET</option>
-                <option value="POST">POST</option>
-                <option value="PUT">PUT</option>
-                <option value="DELETE">DELETE</option>
-              </select>
-              <input type="text" id="studio-url-input" class="param-input" style="flex:1; font-family:var(--font-mono); font-size:12.5px; color:#38bdf8;" placeholder="https://api.example.com/endpoint">
+            <!-- Dropdown Filter & Results Panel -->
+            <div id="studio-combobox-dropdown" class="combobox-dropdown">
+              <div class="combobox-filters">
+                <button class="combobox-filter-pill active" data-filter="all">All (1,689)</button>
+                <button class="combobox-filter-pill" data-filter="interactive">🟢 Interactive (19)</button>
+                <button class="combobox-filter-pill" data-filter="key">🔑 API Key</button>
+                <button class="combobox-filter-pill" data-filter="docs">📘 Docs Only</button>
+              </div>
+              <div id="studio-combobox-list" class="combobox-list">
+                <!-- Dynamically injected via app.js -->
+              </div>
             </div>
           </div>
 
-          <div id="studio-params-container" style="display:flex; flex-direction:column; gap:14px;">
-            <!-- Dynamic parameter inputs rendered here -->
+          <!-- Documentation-Only Callout Card (shown when non-executable API selected) -->
+          <div id="studio-doc-only-card" class="doc-only-banner" style="display:none;">
+            <div class="doc-banner-title">📘 Documentation Only Entry</div>
+            <div class="doc-banner-desc" id="studio-doc-desc">
+              This API is cataloged in the VantagePoint directory. It does not have an executable request definition configured yet.
+            </div>
+            <div class="doc-banner-actions">
+              <a id="btn-open-official-docs" href="#" target="_blank" class="btn-doc-action btn-doc-primary">
+                <span>↗ Open Official Docs</span>
+              </a>
+              <button id="btn-open-api-config" class="btn-doc-action btn-doc-secondary" type="button">
+                <span>⚙️ Configure Endpoint</span>
+              </button>
+            </div>
           </div>
 
-          <button id="btn-run-api" class="btn-execute">
-            <span>⚡ Run Live API</span>
-          </button>
+          <!-- Interactive Request Bar -->
+          <div id="studio-exec-section">
+            <div class="param-group" style="margin-bottom:14px;">
+              <label class="param-label">Live API Request URL:</label>
+              <div style="display:flex; gap:8px; align-items:center;">
+                <select id="studio-http-method" class="param-select" style="width:88px; padding:10px 6px; font-weight:700; color:var(--accent-cyan);">
+                  <option value="GET">GET</option>
+                  <option value="POST">POST</option>
+                  <option value="PUT">PUT</option>
+                  <option value="DELETE">DELETE</option>
+                </select>
+                <input type="text" id="studio-url-input" class="param-input" style="flex:1; font-family:var(--font-mono); font-size:12.5px; color:#38bdf8;" placeholder="https://api.example.com/endpoint">
+              </div>
+            </div>
+
+            <div id="studio-params-container" style="display:flex; flex-direction:column; gap:14px;">
+              <!-- Dynamic parameter inputs rendered here -->
+            </div>
+
+            <button id="btn-run-api" class="btn-execute" style="margin-top:16px;">
+              <span>⚡ Run Live API</span>
+            </button>
+          </div>
         </div>
 
         <!-- Right: Studio Output Workspace -->
@@ -215,6 +257,104 @@
         </p>
         <div id="vault-items-list" style="display:flex; flex-direction:column; gap:12px;">
           <!-- Injected via app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: API Definition Builder & OpenAPI Importer -->
+  <div id="config-modal" class="modal-backdrop">
+    <div class="modal-window" style="max-width:620px;">
+      <div class="modal-header">
+        <div class="modal-title">⚙️ Configure API Request Definition</div>
+        <button id="close-config-btn" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px; color:var(--text-muted); line-height:1.4; margin-bottom:14px;">
+          Create a live execution configuration for this catalog API to enable direct in-browser testing and code generation.
+        </p>
+
+        <!-- Configuration Tabs -->
+        <div style="display:flex; gap:8px; margin-bottom:14px; border-bottom:1px solid var(--border-glass); padding-bottom:8px;">
+          <button id="tab-cfg-manual" class="filter-chip active" style="font-size:12px;">✍️ Manual Configuration</button>
+          <button id="tab-cfg-openapi" class="filter-chip" style="font-size:12px;">📥 Import OpenAPI / Swagger</button>
+        </div>
+
+        <!-- OpenAPI Importer Panel -->
+        <div id="panel-cfg-openapi" style="display:none; flex-direction:column; gap:10px; margin-bottom:14px;">
+          <label class="param-label">OpenAPI / Swagger JSON or URL:</label>
+          <textarea id="cfg-openapi-input" class="param-textarea" placeholder="Paste OpenAPI JSON schema or URL (e.g. https://petstore.swagger.io/v2/swagger.json)..." style="min-height:80px;"></textarea>
+          <button id="btn-parse-openapi" class="btn-doc-action btn-doc-primary" style="align-self:flex-start;">
+            <span>⚡ Parse & Extract Endpoints</span>
+          </button>
+        </div>
+
+        <!-- Manual Definition Form -->
+        <div id="panel-cfg-manual" style="display:flex; flex-direction:column; gap:12px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="param-group">
+              <label class="param-label">API Name:</label>
+              <input type="text" id="cfg-api-name" class="param-input" placeholder="e.g. Open Exchange Rates">
+            </div>
+            <div class="param-group">
+              <label class="param-label">Category:</label>
+              <input type="text" id="cfg-api-cat" class="param-input" placeholder="e.g. Finance">
+            </div>
+          </div>
+
+          <div class="param-group">
+            <label class="param-label">Base URL:</label>
+            <input type="text" id="cfg-api-base" class="param-input" placeholder="https://api.example.com">
+          </div>
+
+          <div style="display:grid; grid-template-columns:100px 1fr; gap:10px;">
+            <div class="param-group">
+              <label class="param-label">Method:</label>
+              <select id="cfg-api-method" class="param-select">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+              </select>
+            </div>
+            <div class="param-group">
+              <label class="param-label">Endpoint Path:</label>
+              <input type="text" id="cfg-api-endpoint" class="param-input" placeholder="/v1/latest.json">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+            <div class="param-group">
+              <label class="param-label">Authentication:</label>
+              <select id="cfg-api-auth" class="param-select">
+                <option value="none">No Auth (Public)</option>
+                <option value="apiKeyQuery">API Key in Query Param (?apikey=)</option>
+                <option value="apiKeyHeader">API Key in Header (X-API-Key:)</option>
+                <option value="bearer">Bearer Token (Authorization: Bearer)</option>
+              </select>
+            </div>
+            <div class="param-group">
+              <label class="param-label">Visualizer Canvas:</label>
+              <select id="cfg-api-visualizer" class="param-select">
+                <option value="generic">Generic Smart Table</option>
+                <option value="crypto">Crypto Gauge</option>
+                <option value="weather">Weather Forecast</option>
+                <option value="animal">Animal / Image Media</option>
+                <option value="pokemon">Character Card</option>
+                <option value="quote">Quote & Fact</option>
+                <option value="books">Book & Library</option>
+                <option value="country">Country Dossier</option>
+                <option value="nasa">NASA Astronomy</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:20px;">
+          <button id="btn-cancel-config" class="btn-doc-action btn-doc-secondary">Cancel</button>
+          <button id="btn-save-config" class="btn-execute" style="padding:10px 20px; font-size:13.5px; margin-top:0;">
+            <span>⚡ Save & Launch in Studio</span>
+          </button>
         </div>
       </div>
     </div>
