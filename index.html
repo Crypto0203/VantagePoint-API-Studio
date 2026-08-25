@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VantagePoint API Studio — The Ultimate Public API Command Center & Explorer</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Left Sidebar Navigation -->
+  <aside class="app-sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon">⚡</div>
+      <div>
+        <div class="brand-title">VantagePoint API</div>
+        <div class="brand-badge">Command Center Pro</div>
+      </div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-section-title">API Categories</div>
+      <div id="sidebar-cat-list">
+        <!-- Injected via app.js -->
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <button class="vault-status-btn" id="open-vault-btn">
+        <span>🔑 API Key Vault</span>
+        <span id="vault-btn-badge" style="font-size:11px; opacity:0.8;">0 Keys</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Application Body -->
+  <main class="app-main">
+    
+    <!-- Top Header Bar -->
+    <header class="app-header">
+      <div class="search-box-wrapper">
+        <span class="search-icon-abs">🔍</span>
+        <input type="text" id="main-search-input" class="search-input" placeholder="Search 1,400+ public APIs (e.g. crypto, weather, ai, anime)...">
+      </div>
+
+      <div class="header-actions">
+        <button class="header-action-btn" onclick="window.app.switchView('studio')">
+          <span>⚡ Interactive Studio</span>
+        </button>
+        <button class="header-action-btn" onclick="window.app.switchView('directory')">
+          <span>📚 GitHub Mega Catalog</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Page Content Container -->
+    <div class="page-container">
+      
+      <!-- Main Banner Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h1 class="header-title">VantagePoint API Developer Studio</h1>
+          <p class="header-desc">Discover, test, and visualize 1,689+ free public APIs with zero backend code. Generate instant Python, JavaScript, cURL, Go, and Flutter snippets in 1 click.</p>
+        </div>
+        <div class="stats-badge-group">
+          <div class="stat-box">
+            <div class="stat-number">1,689+</div>
+            <div class="stat-label">Public APIs</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">100% Free</div>
+            <div class="stat-label">Zero Cost</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-number">6+ Langs</div>
+            <div class="stat-label">Code Generator</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View Switcher -->
+      <div class="view-tabs">
+        <button class="view-tab-btn active" data-view="studio">
+          <span>⚡ Interactive Studio Playground</span>
+        </button>
+        <button class="view-tab-btn" data-view="directory">
+          <span>📚 GitHub Public APIs Catalog</span>
+        </button>
+      </div>
+
+      <!-- SECTION 1: Interactive Studio Playground -->
+      <section id="section-studio" class="studio-layout">
+        
+        <!-- Left: API Control & Parameter Form -->
+        <div class="studio-control-card">
+          <div class="control-header">
+            <h3 id="studio-api-title">CoinGecko Live Crypto Tracker</h3>
+            <p id="studio-api-desc">Get real-time prices, market cap, and 24h volume for Bitcoin, Ethereum, Solana, and 500+ coins.</p>
+          </div>
+
+          <div class="param-group">
+            <label class="param-label">Select Interactive API:</label>
+            <select id="studio-api-select" class="api-select-dropdown">
+              <!-- Injected via app.js -->
+            </select>
+          </div>
+
+          <div id="studio-params-container" style="display:flex; flex-direction:column; gap:14px;">
+            <!-- Dynamic parameter inputs rendered here -->
+          </div>
+
+          <button id="btn-run-api" class="btn-execute">
+            <span>⚡ Run Live API</span>
+          </button>
+        </div>
+
+        <!-- Right: Studio Output Workspace -->
+        <div class="studio-output-workspace">
+          
+          <!-- Live Terminal Status Bar -->
+          <div class="status-bar-card">
+            <div class="status-left">
+              <span id="status-method" class="http-method-badge">GET</span>
+              <span id="status-code" class="http-status-badge success">200 OK</span>
+              <span id="status-latency" class="latency-tag">⏱️ 140 ms</span>
+            </div>
+
+            <div class="output-view-toggle">
+              <button class="toggle-btn active" data-mode="visual">🎨 Visual Cards</button>
+              <button class="toggle-btn" data-mode="json">🌲 Raw JSON Tree</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Visual Canvas Output -->
+          <div id="visual-canvas" class="visual-canvas-card">
+            <!-- Rendered by SmartVisualizer -->
+          </div>
+
+          <!-- Polyglot Code Generator -->
+          <div class="codegen-card">
+            <div class="codegen-header">
+              <div class="lang-tabs">
+                <button class="lang-btn active" data-lang="pythonRequests">🐍 Python (requests)</button>
+                <button class="lang-btn" data-lang="javascriptFetch">🌐 JavaScript (fetch)</button>
+                <button class="lang-btn" data-lang="curl">💻 cURL</button>
+                <button class="lang-btn" data-lang="nodejsAxios">📦 Axios</button>
+                <button class="lang-btn" data-lang="golang">🐹 Go</button>
+                <button class="lang-btn" data-lang="dartFlutter">📱 Flutter</button>
+              </div>
+              <button id="btn-copy-code-main" class="btn-copy-code">Copy Code</button>
+            </div>
+            <pre id="code-display" class="code-display-area">import requests...</pre>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SECTION 2: GitHub Mega Catalog -->
+      <section id="section-directory" style="display:none;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="font-size:18px; font-weight:700;">GitHub Public APIs Directory</h3>
+            <p style="font-size:12.5px; color:var(--text-muted); margin-top:2px;">Over 70% of these APIs are 100% free and work with 0 setup or keys!</p>
+          </div>
+          <span id="dir-count-tag" style="font-size:13px; color:var(--accent-cyan); font-weight:600; background:rgba(56,189,248,0.1); padding:4px 10px; border-radius:100px;">1,689 Public APIs</span>
+        </div>
+
+        <!-- Filter Chips: Free vs Key -->
+        <div class="directory-filters">
+          <button class="filter-chip auth-filter-btn active" data-auth="all">🌐 All APIs (1,689)</button>
+          <button class="filter-chip auth-filter-btn" data-auth="free" style="border-color:rgba(34,197,94,0.4); color:var(--accent-green);">✓ 100% Free / No Key Required (Instant)</button>
+          <button class="filter-chip auth-filter-btn" data-auth="key" style="border-color:rgba(245,158,11,0.4); color:var(--accent-amber);">🔑 Free API Key Required</button>
+        </div>
+
+        <div id="mega-directory-grid" class="mega-grid">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- MODAL: API Key Vault -->
+  <div id="vault-modal" class="modal-backdrop">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">🔑 Secure API Key Vault</div>
+        <button id="close-vault-btn" class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:13px; color:var(--text-muted); line-height:1.4;">
+          Your API keys are stored <strong>100% locally in your browser's localStorage</strong>. They are never sent to any third-party analytics or external servers.
+        </p>
+        <div id="vault-items-list" style="display:flex; flex-direction:column; gap:12px;">
+          <!-- Injected via app.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/bundle.js"></script>
+</body>
+</html>
