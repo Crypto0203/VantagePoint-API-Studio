@@ -1,0 +1,570 @@
+[
+  {
+    "id": "dog-ceo",
+    "name": "Dog CEO & Dog Breeds",
+    "category": "Animals",
+    "description": "Instant random high-definition dog pictures and Stanford breed dataset.",
+    "baseUrl": "https://dog.ceo/api",
+    "documentation": "https://dog.ceo/dog-api/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/breeds/image/random",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "animal"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "coingecko-crypto",
+    "name": "CoinGecko Live Crypto Tracker",
+    "category": "Cryptocurrency",
+    "description": "Get real-time prices, market cap, and 24h volume for Bitcoin, Ethereum, and Solana in INR and USD.",
+    "baseUrl": "https://api.coingecko.com/api/v3",
+    "documentation": "https://www.coingecko.com/en/api",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/simple/price",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "ids", "label": "Cryptocurrency", "type": "select", "required": true, "default": "bitcoin,ethereum,solana", "location": "query", "options": [{ "label": "Top 3 (BTC, ETH, SOL)", "value": "bitcoin,ethereum,solana" }, { "label": "Bitcoin", "value": "bitcoin" }, { "label": "Ethereum", "value": "ethereum" }] },
+        { "name": "vs_currencies", "label": "Target Currencies", "type": "select", "required": true, "default": "inr,usd", "location": "query", "options": [{ "label": "INR & USD", "value": "inr,usd" }, { "label": "USD Only", "value": "usd" }] },
+        { "name": "include_24hr_change", "label": "24h Change", "type": "select", "required": false, "default": "true", "location": "query", "options": [{ "label": "Yes", "value": "true" }, { "label": "No", "value": "false" }] }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "crypto"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "open-meteo-weather",
+    "name": "Open-Meteo Global Weather",
+    "category": "Weather",
+    "description": "Accurate open-source weather forecasts, temperature, and windspeed for any city worldwide.",
+    "baseUrl": "https://api.open-meteo.com/v1",
+    "documentation": "https://open-meteo.com/en/docs",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/forecast",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "latitude", "label": "Latitude", "type": "number", "required": true, "default": "19.076", "location": "query", "description": "e.g. 19.076 for Mumbai" },
+        { "name": "longitude", "label": "Longitude", "type": "number", "required": true, "default": "72.877", "location": "query", "description": "e.g. 72.877 for Mumbai" },
+        { "name": "current_weather", "label": "Current Weather", "type": "select", "required": true, "default": "true", "location": "query", "options": [{ "label": "True", "value": "true" }, { "label": "False", "value": "false" }] }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "weather"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "ip-geolocation",
+    "name": "IP Geolocation & ISP Detector",
+    "category": "Security",
+    "description": "Detect visitor public IP address, country, city, ISP organization, coordinates, and timezone.",
+    "baseUrl": "https://ipwho.is",
+    "documentation": "https://ipwhois.io/documentation",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "ip"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "cataas-cat-api",
+    "name": "Cataas (Cat as a Service)",
+    "category": "Animals",
+    "description": "Instant random cat pictures, tags, and animated GIFs.",
+    "baseUrl": "https://cataas.com",
+    "documentation": "https://cataas.com/#/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/cat",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "json", "label": "JSON Format", "type": "text", "required": false, "default": "true", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "animal"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "random-fox",
+    "name": "Random Fox Wildlife Photography",
+    "category": "Animals",
+    "description": "Curated collection of high-resolution wild fox photography.",
+    "baseUrl": "https://randomfox.ca",
+    "documentation": "https://randomfox.ca/floof/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/floof/",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "animal"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "cat-facts",
+    "name": "Cat Facts Science & Trivia",
+    "category": "Animals",
+    "description": "Fascinating biological and historical facts about felines.",
+    "baseUrl": "https://catfact.ninja",
+    "documentation": "https://catfact.ninja/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/fact",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "quote"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "official-joke",
+    "name": "Official Joke & Humor Generator",
+    "category": "Entertainment",
+    "description": "Random programming, general, and knock-knock jokes with punchline delivery.",
+    "baseUrl": "https://official-joke-api.appspot.com",
+    "documentation": "https://github.com/15Dkatz/official_joke_api",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/random_joke",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "joke"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "pokeapi-explorer",
+    "name": "PokéAPI Monster DB",
+    "category": "Gaming",
+    "description": "Explore Pokemon stats, artwork sprites, types, abilities, and height/weight.",
+    "baseUrl": "https://pokeapi.co/api/v2",
+    "documentation": "https://pokeapi.co/docs/v2",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/pokemon/{name}",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "name", "label": "Pokemon Name", "type": "text", "required": true, "default": "pikachu", "location": "path" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "pokemon"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "rest-countries",
+    "name": "REST Countries World Directory",
+    "category": "Geography",
+    "description": "Detailed country data: capitals, currencies, populations, languages, and flag emoji.",
+    "baseUrl": "https://restcountries.com/v3.1",
+    "documentation": "https://restcountries.com/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/name/{name}",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "name", "label": "Country Name", "type": "text", "required": true, "default": "india", "location": "path" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "country"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "chuck-norris",
+    "name": "Chuck Norris Facts & Quotes",
+    "category": "Entertainment",
+    "description": "Handcrafted satirical facts about Chuck Norris with zero rate limits.",
+    "baseUrl": "https://api.chucknorris.io",
+    "documentation": "https://api.chucknorris.io/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/jokes/random",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "quote"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "random-user",
+    "name": "Random User Identity Generator",
+    "category": "Development",
+    "description": "Generate realistic fake user profiles with avatar pictures, names, emails, and phone numbers.",
+    "baseUrl": "https://randomuser.me/api",
+    "documentation": "https://randomuser.me/documentation",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "results", "label": "Results Count", "type": "number", "required": false, "default": "1", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "user"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "agify-age",
+    "name": "Agify Name Age Predictor",
+    "category": "Data Validation",
+    "description": "Predict the estimated age of any person based on their first name.",
+    "baseUrl": "https://api.agify.io",
+    "documentation": "https://agify.io/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "name", "label": "First Name", "type": "text", "required": true, "default": "suresh", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "prediction"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "open-library",
+    "name": "Open Library Global Book Search",
+    "category": "Books",
+    "description": "Search millions of books, author biographies, book covers, and published editions.",
+    "baseUrl": "https://openlibrary.org",
+    "documentation": "https://openlibrary.org/developers/api",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/search.json",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "q", "label": "Search Title", "type": "text", "required": true, "default": "artificial intelligence", "location": "query" },
+        { "name": "limit", "label": "Limit", "type": "number", "required": false, "default": "6", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "books"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "advice-slip",
+    "name": "Daily Wisdom & Advice API",
+    "category": "Quotes",
+    "description": "Generate instant motivational advice, programming wisdom, and life insights.",
+    "baseUrl": "https://api.adviceslip.com",
+    "documentation": "https://api.adviceslip.com/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/advice",
+      "authentication": { "type": "none" },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "quote"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "frankfurter-forex",
+    "name": "Frankfurter Currency Exchange Rates",
+    "category": "Finance",
+    "description": "Track live foreign exchange rates published by the European Central Bank.",
+    "baseUrl": "https://api.frankfurter.app",
+    "documentation": "https://www.frankfurter.app/docs/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/latest",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "from", "label": "Base Currency", "type": "select", "required": true, "default": "USD", "location": "query", "options": [{ "label": "USD", "value": "USD" }, { "label": "EUR", "value": "EUR" }, { "label": "GBP", "value": "GBP" }] },
+        { "name": "to", "label": "Target Currencies", "type": "text", "required": false, "default": "INR,EUR,GBP,JPY", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "forex"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "nasa-apod",
+    "name": "NASA Astronomy Picture of the Day",
+    "category": "Science",
+    "description": "Discover the cosmos with daily high-resolution astronomical images from NASA scientists.",
+    "baseUrl": "https://api.nasa.gov",
+    "documentation": "https://api.nasa.gov/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/planetary/apod",
+      "authentication": {
+        "type": "apiKeyQuery",
+        "keyName": "api_key",
+        "vaultKey": "NASA_API_KEY"
+      },
+      "parameters": [],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "nasa"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "jsonplaceholder-posts",
+    "name": "JSONPlaceholder Mock Posts & CRUD",
+    "category": "Development",
+    "description": "Industry-standard mock REST API for testing client-side GET, POST, PUT, PATCH, DELETE operations.",
+    "baseUrl": "https://jsonplaceholder.typicode.com",
+    "documentation": "https://jsonplaceholder.typicode.com/",
+    "execution": {
+      "enabled": true,
+      "method": "GET",
+      "endpoint": "/posts",
+      "authentication": { "type": "none" },
+      "parameters": [
+        { "name": "_limit", "label": "Items Limit", "type": "number", "required": false, "default": "6", "location": "query" }
+      ],
+      "headers": {},
+      "body": null,
+      "cors": "yes",
+      "timeoutMs": 12000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "mockdata"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "none"
+    }
+  },
+  {
+    "id": "gemini-ai-studio",
+    "name": "Google Gemini AI Prompt Studio",
+    "category": "Artificial Intelligence",
+    "description": "Run advanced reasoning and coding tasks using Google Gemini models.",
+    "baseUrl": "https://generativelanguage.googleapis.com/v1beta",
+    "documentation": "https://ai.google.dev/docs",
+    "execution": {
+      "enabled": true,
+      "method": "POST",
+      "endpoint": "/models/gemini-1.5-flash:generateContent",
+      "authentication": {
+        "type": "apiKeyQuery",
+        "keyName": "key",
+        "vaultKey": "GEMINI_API_KEY"
+      },
+      "parameters": [
+        { "name": "prompt", "label": "AI Prompt", "type": "textarea", "required": true, "default": "Explain how REST APIs work in simple terms with 3 key rules for junior developers.", "location": "body" }
+      ],
+      "headers": { "Content-Type": "application/json" },
+      "body": { "contents": [{ "parts": [{ "text": "{{prompt}}" }] }] },
+      "cors": "yes",
+      "timeoutMs": 15000
+    },
+    "response": {
+      "type": "json",
+      "visualizer": "ai"
+    },
+    "status": {
+      "verification": "verified",
+      "browserSupport": "supported",
+      "authenticationStatus": "key"
+    }
+  }
+]
