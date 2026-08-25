@@ -1099,6 +1099,25 @@
         });
       }
 
+      // Quick-Tour Test Drive Pills
+      document.querySelectorAll(".quick-tour-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const quickId = btn.dataset.quickId;
+          if (!quickId) return;
+
+          document.querySelectorAll(".quick-tour-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+
+          if (this.currentView !== "studio") {
+            this.switchView("studio");
+          }
+
+          this.selectedApiId = quickId;
+          this.loadApiToStudio(quickId);
+          this.executeActiveStudioApi();
+        });
+      });
+
       // View Switcher Tabs
       document.querySelectorAll(".view-tab-btn").forEach(btn => {
         btn.addEventListener("click", () => {
@@ -1426,6 +1445,11 @@
       const urlInput = document.getElementById("studio-url-input");
       const methodSelect = document.getElementById("studio-http-method");
       const officialDocsBtn = document.getElementById("btn-open-official-docs");
+
+      // Sync Quick Tour Pill active state if matching
+      document.querySelectorAll(".quick-tour-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.quickId === apiId);
+      });
 
       if (titleEl) titleEl.innerText = api.name;
       if (descEl) descEl.innerText = api.description;

@@ -54,11 +54,67 @@
         <button class="header-action-btn" onclick="window.app.switchView('studio')">
           <span>⚡ Interactive Studio</span>
         </button>
-        <button class="header-action-btn" onclick="window.app.switchView('directory')">
+        <button class="header-action-btn" onclick="window.vantagePointApp && window.vantagePointApp.switchView('directory')">
           <span>📚 GitHub Mega Catalog</span>
         </button>
       </div>
     </header>
+
+    <!-- Top Live Ticker Marquee -->
+    <div class="ticker-banner-wrapper">
+      <div class="ticker-track">
+        <div class="ticker-item">
+          <span class="ticker-badge">COMMAND CENTER</span>
+          <span>VantagePoint API Studio: Universal Developer Playground for 1,689+ Public REST APIs</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">1-CLICK LIVE TEST</span>
+          <span>Test Live APIs with 0 backend code & instant visual data cards</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">POLYGLOT CODE GEN</span>
+          <span>Instant Python, JS Fetch, cURL, Axios, Go, & Flutter snippets</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">ENCRYPTED VAULT</span>
+          <span>Secure browser localStorage key management</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">100% FREE</span>
+          <span>Over 1,100+ endpoints work with zero setup or API keys</span>
+        </div>
+        <!-- Duplicate for continuous loop -->
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">COMMAND CENTER</span>
+          <span>VantagePoint API Studio: Universal Developer Playground for 1,689+ Public REST APIs</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">1-CLICK LIVE TEST</span>
+          <span>Test Live APIs with 0 backend code & instant visual data cards</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">POLYGLOT CODE GEN</span>
+          <span>Instant Python, JS Fetch, cURL, Axios, Go, & Flutter snippets</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">ENCRYPTED VAULT</span>
+          <span>Secure browser localStorage key management</span>
+        </div>
+        <div class="ticker-item">
+          <span class="ticker-dot">●</span>
+          <span class="ticker-badge">100% FREE</span>
+          <span>Over 1,100+ endpoints work with zero setup or API keys</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Page Content Container -->
     <div class="page-container">
@@ -86,6 +142,24 @@
             <div class="stat-number">6+ Langs</div>
             <div class="stat-label">Code Generator</div>
           </div>
+        </div>
+      </div>
+
+      <!-- 1-Click Interactive Test Drive Bar -->
+      <div class="quick-tour-card">
+        <div class="quick-tour-label">
+          <span>🔥 1-Click Test Drive:</span>
+        </div>
+        <div class="quick-tour-pills">
+          <button class="quick-tour-btn active" data-quick-id="dog-ceo">🐶 Dog Photos</button>
+          <button class="quick-tour-btn" data-quick-id="coingecko-crypto">💰 Live Crypto (INR/USD)</button>
+          <button class="quick-tour-btn" data-quick-id="open-meteo-weather">🌦️ Live Weather</button>
+          <button class="quick-tour-btn" data-quick-id="pokeapi-monsters">⚡ Pikachu & Stats</button>
+          <button class="quick-tour-btn" data-quick-id="cataas-cats">😸 Random Cats</button>
+          <button class="quick-tour-btn" data-quick-id="nasa-apod">🚀 NASA Astronomy</button>
+          <button class="quick-tour-btn" data-quick-id="rest-countries">🌐 Country Dossier</button>
+          <button class="quick-tour-btn" data-quick-id="advice-slip">💡 Life Advice</button>
+          <button class="quick-tour-btn" data-quick-id="frankfurter-fx">💱 Currency Rates</button>
         </div>
       </div>
 
