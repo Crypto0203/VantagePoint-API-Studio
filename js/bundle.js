@@ -1389,14 +1389,14 @@
       }
       if (body && (upperMethod === 'POST' || upperMethod === 'PUT' || upperMethod === 'PATCH')) {
         const formattedBody = typeof body === 'string' ? body.replace(/"/g, '\"') : JSON.stringify(body).replace(/"/g, '\"');
-        cmd += ' \\\n  -d '' + formattedBody + ''';
+        cmd += ' \\\n  -d "' + formattedBody + '"';
       }
       return cmd;
     }
 
     static nodejsAxios(method, url, headers = {}, body = null) {
       const upperMethod = (method || 'GET').toUpperCase();
-      let code = 'const axios = require(\'axios\');\n\nasync function makeRequest() {\n  try {\n    const config = {\n      method: \'' + upperMethod.toLowerCase() + '\',\n      url: \'' + url + '\',\n';
+      let code = 'const axios = require("axios");\n\nasync function makeRequest() {\n  try {\n    const config = {\n      method: "' + upperMethod.toLowerCase() + '",\n      url: "' + url + '",\n';
       if (Object.keys(headers).length > 0) {
         code += '      headers: ' + JSON.stringify(headers, null, 8).trim() + ',\n';
       }
@@ -1419,14 +1419,14 @@
 
     static dartFlutter(method, url, headers = {}, body = null) {
       const upperMethod = (method || 'GET').toUpperCase();
-      let code = 'import \'dart:convert\';\nimport \'package:http/http.dart\' as http;\n\nFuture<void> fetchApi() async {\n  final url = Uri.parse(\'' + url + '\');\n  final response = await http.' + upperMethod.toLowerCase() + '(\n    url,\n';
+      let code = 'import "dart:convert";\nimport "package:http/http.dart" as http;\n\nFuture<void> fetchApi() async {\n  final url = Uri.parse("' + url + '");\n  final response = await http.' + upperMethod.toLowerCase() + '(\n    url,\n';
       if (Object.keys(headers).length > 0) {
         code += '    headers: ' + JSON.stringify(headers, null, 4) + ',\n';
       }
       if (body && (upperMethod === 'POST' || upperMethod === 'PUT' || upperMethod === 'PATCH')) {
         code += '    body: jsonEncode(' + (typeof body === 'string' ? JSON.stringify(body) : JSON.stringify(body)) + '),\n';
       }
-      code += '  );\n\n  if (response.statusCode >= 200 && response.statusCode < 300) {\n    final data = jsonDecode(response.body);\n    print("Success: $data");\n  } else {\n    print(\'Failed with status: ${response.statusCode}\');\n  }\n}';
+      code += '  );\n\n  if (response.statusCode >= 200 && response.statusCode < 300) {\n    final data = jsonDecode(response.body);\n    print("Success: $data");\n  } else {\n    print("Failed with status: " + response.statusCode);\n  }\n}';
       return code;
     }
   }
