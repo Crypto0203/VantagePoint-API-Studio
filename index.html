@@ -119,27 +119,38 @@
     <!-- Page Content Container -->
     <div class="page-container">
       
-      <!-- Main Hero Banner -->
+      <!-- Main Hero Banner v2.0 -->
       <div class="hero-banner">
         <div class="hero-text">
-          <h2>VantagePoint API Developer Studio</h2>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+            <h2>VantagePoint API Developer Studio</h2>
+            <span class="ticker-badge" style="background:rgba(168,85,247,0.2); color:#c084fc; border-color:rgba(168,85,247,0.4); font-size:10px;">v2.0 PRO</span>
+          </div>
           <p>Discover, test, and visualize 1,689+ public APIs with zero backend code. Generate instant Python, JavaScript, cURL, Go, and Flutter snippets in 1 click.</p>
         </div>
         <div class="stats-badge-group">
           <div class="stat-box">
-            <div class="stat-number" id="metric-catalog-count">1,689+</div>
-            <div class="stat-label">Cataloged APIs</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">
+              <span style="font-size:14px;">📊</span>
+              <span class="stat-number" id="metric-catalog-count">1,689+</span>
+              <span style="font-size:9px; background:rgba(74,222,128,0.15); color:#4ade80; padding:1px 5px; border-radius:4px; font-weight:700;">+125 NEW</span>
+            </div>
+            <div class="stat-label">Total Cataloged APIs</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number" id="metric-interactive-count" style="color:#4ade80;">20+</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">
+              <span style="font-size:14px;">⚡</span>
+              <span class="stat-number" id="metric-interactive-count" style="color:#c084fc;">20+</span>
+              <span style="font-size:9px; background:rgba(168,85,247,0.15); color:#c084fc; padding:1px 5px; border-radius:4px; font-weight:700;">ACTIVE</span>
+            </div>
             <div class="stat-label">Interactive Sandboxes</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">100% Free</div>
-            <div class="stat-label">Zero Cost</div>
-          </div>
-          <div class="stat-box">
-            <div class="stat-number">6+ Langs</div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:6px;">
+              <span style="font-size:14px;">💻</span>
+              <span class="stat-number" style="color:#38bdf8;">6+ Langs</span>
+              <span style="font-size:9px; background:rgba(56,189,248,0.15); color:#38bdf8; padding:1px 5px; border-radius:4px; font-weight:700;">POLYGLOT</span>
+            </div>
             <div class="stat-label">Code Generator</div>
           </div>
         </div>
@@ -148,24 +159,102 @@
       <!-- 1-Click Interactive Test Drive Bar -->
       <div class="quick-tour-card">
         <div class="quick-tour-label">
-          <span>🔥 1-Click Test Drive:</span>
+          <span>⚡ 1-Click Test Drive:</span>
         </div>
         <div class="quick-tour-pills">
-          <button class="quick-tour-btn active" data-quick-id="dog-ceo">🐶 Dog Photos</button>
-          <button class="quick-tour-btn" data-quick-id="coingecko-crypto">💰 Live Crypto (INR/USD)</button>
-          <button class="quick-tour-btn" data-quick-id="gemini-ai-studio" style="border-color:rgba(192, 132, 252, 0.4); color:#e9d5ff;">🤖 Google Gemini AI</button>
-          <button class="quick-tour-btn" data-quick-id="open-meteo-weather">🌦️ Live Weather</button>
+          <button class="quick-tour-btn active" data-quick-id="coingecko-crypto">📈 Live Crypto (BTC/USD)</button>
+          <button class="quick-tour-btn" data-quick-id="gemini-ai-studio" style="border-color:rgba(192, 132, 252, 0.4); color:#e9d5ff;">🤖 AI Text Gen (Gemini)</button>
+          <button class="quick-tour-btn" data-quick-id="open-meteo-weather">🌦️ Global Weather Data</button>
+          <button class="quick-tour-btn" data-quick-id="dog-ceo">🐶 Dog Photography</button>
+          <button class="quick-tour-btn" data-quick-id="cataas-cats">🐱 Random Cat Media</button>
           <button class="quick-tour-btn" data-quick-id="pokeapi-monsters">⚡ Pikachu & Stats</button>
-          <button class="quick-tour-btn" data-quick-id="cataas-cats">😸 Random Cats</button>
-          <button class="quick-tour-btn" data-quick-id="nasa-apod">🚀 NASA Astronomy</button>
-          <button class="quick-tour-btn" data-quick-id="rest-countries">🌐 Country Dossier</button>
-          <button class="quick-tour-btn" data-quick-id="advice-slip">💡 Life Advice</button>
           <button class="quick-tour-btn" data-quick-id="frankfurter-forex">💱 Currency Rates</button>
+          <button class="quick-tour-btn" data-quick-id="nasa-apod">🚀 NASA Space Imagery</button>
+          <button class="quick-tour-btn" data-quick-id="advice-slip">💡 Daily Advice</button>
+        </div>
+      </div>
+
+      <!-- API Explorer Featured Row (v2.0 Showcase) -->
+      <div class="explorer-showcase-section">
+        <div class="explorer-showcase-header">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span style="font-size:14px; font-weight:700; color:white;">🔥 Featured API Explorer</span>
+            <span style="font-size:11px; color:var(--text-dim);">Click any card to load live test sandbox</span>
+          </div>
+          <button class="header-action-btn" onclick="window.vantagePointApp && window.vantagePointApp.switchView('directory')" style="padding:4px 10px; font-size:11.5px;">
+            <span>Browse Full Catalog (1,689+) ↗</span>
+          </button>
+        </div>
+        
+        <div class="explorer-cards-grid">
+          <div class="explorer-card" onclick="window.vantagePointApp && (window.vantagePointApp.loadApiToStudio('coingecko-crypto'), window.vantagePointApp.executeActiveStudioApi())">
+            <div class="explorer-card-top">
+              <div class="explorer-card-icon">💰</div>
+              <div>
+                <div class="explorer-card-title">CoinGecko Live Crypto Tracker</div>
+                <div class="explorer-card-sub">Cryptocurrency API</div>
+              </div>
+            </div>
+            <div class="explorer-card-desc">Real-time prices, market cap, and 24h volume for Bitcoin, Ethereum, and Solana in INR & USD.</div>
+            <div class="explorer-card-badges">
+              <span class="meta-badge free">● Verified</span>
+              <span class="meta-badge free">● 100% Free</span>
+              <span class="meta-badge https">No Key Required</span>
+            </div>
+          </div>
+
+          <div class="explorer-card" onclick="window.vantagePointApp && (window.vantagePointApp.loadApiToStudio('gemini-ai-studio'), window.vantagePointApp.executeActiveStudioApi())">
+            <div class="explorer-card-top">
+              <div class="explorer-card-icon" style="background:rgba(168,85,247,0.2); color:#c084fc;">🤖</div>
+              <div>
+                <div class="explorer-card-title">Google Gemini AI Prompt Studio</div>
+                <div class="explorer-card-sub">Artificial Intelligence</div>
+              </div>
+            </div>
+            <div class="explorer-card-desc">Execute intelligent reasoning and coding tasks with Google Gemini 1.5 Flash model.</div>
+            <div class="explorer-card-badges">
+              <span class="meta-badge free">● Verified</span>
+              <span class="meta-badge auth">● Free Tier</span>
+              <span class="meta-badge" style="background:rgba(168,85,247,0.15); color:#e9d5ff;">Vault Key Supported</span>
+            </div>
+          </div>
+
+          <div class="explorer-card" onclick="window.vantagePointApp && (window.vantagePointApp.loadApiToStudio('open-meteo-weather'), window.vantagePointApp.executeActiveStudioApi())">
+            <div class="explorer-card-top">
+              <div class="explorer-card-icon" style="background:rgba(56,189,248,0.2); color:var(--accent-cyan);">🌦️</div>
+              <div>
+                <div class="explorer-card-title">Open-Meteo Global Weather</div>
+                <div class="explorer-card-sub">Weather Category</div>
+              </div>
+            </div>
+            <div class="explorer-card-desc">Accurate open-source weather forecasts, temperature, wind speed, and radar for any city.</div>
+            <div class="explorer-card-badges">
+              <span class="meta-badge free">● Verified</span>
+              <span class="meta-badge free">● 100% Free</span>
+              <span class="meta-badge https">No Key Required</span>
+            </div>
+          </div>
+
+          <div class="explorer-card" onclick="window.vantagePointApp && (window.vantagePointApp.loadApiToStudio('frankfurter-forex'), window.vantagePointApp.executeActiveStudioApi())">
+            <div class="explorer-card-top">
+              <div class="explorer-card-icon" style="background:rgba(250,204,21,0.2); color:#facc15;">💱</div>
+              <div>
+                <div class="explorer-card-title">Frankfurter Currency Exchange</div>
+                <div class="explorer-card-sub">Finance & Forex</div>
+              </div>
+            </div>
+            <div class="explorer-card-desc">Live foreign exchange rates published by the European Central Bank across 30+ currencies.</div>
+            <div class="explorer-card-badges">
+              <span class="meta-badge free">● Verified</span>
+              <span class="meta-badge free">● 100% Free</span>
+              <span class="meta-badge https">No Key Required</span>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- View Switcher -->
-      <div class="view-tabs">
+      <div class="view-tabs" style="margin-top:16px;">
         <button class="view-tab-btn active" data-view="studio">
           <span>⚡ Interactive Studio Playground</span>
         </button>
